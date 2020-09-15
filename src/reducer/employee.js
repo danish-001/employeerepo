@@ -10,7 +10,7 @@ const employeeReducer = (state = { initialState }, action) => {
         ...state,
       }
     default:
-      return state
+      return { ...state }
   }
 }
 

@@ -11,7 +11,7 @@ export class EmployeeDetails extends Component<Props> {
     const { users, editReview, navigation } = this.props
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> Employee Details here </Text>
       </View>
     )
   }
