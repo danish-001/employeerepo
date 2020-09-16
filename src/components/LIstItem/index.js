@@ -1,13 +1,13 @@
 import React from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import styles from './styles'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { isIPhoneX } from '../../constants/helper'
+import sagas from '../../sagas/index'
 
 function ListItem({ item, onPress }) {
   return (
     <FlatList
       data={item}
-      style={{}}
       renderItem={({ item }) => (
         <>
           <TouchableOpacity
@@ -51,11 +51,10 @@ function ListItem({ item, onPress }) {
           </TouchableOpacity>
           <View
             style={{
-              borderWidth: 0.4,
-
+              borderWidth: isIPhoneX() ? 0.4 : 0.5,
               flex: 1,
               flexDirection: 'column',
-              borderColor: 'gray',
+              borderColor: 'lightgray',
               marginHorizontal: 20,
             }}
           ></View>
