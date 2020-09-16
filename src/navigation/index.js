@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 import Dashboard from '../features/home/containers/Dashboard'
-import EmployeeDetails from '../features/EmployeeDetails/containers/employeeDetails'
+import EmployeeDetails from '../features/EmployeeDetails/components/EmployeeDetails'
 
 const Stack = createStackNavigator()
 
