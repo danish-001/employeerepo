@@ -1,16 +1,23 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import Request from '../../../api/request'
-import { EMPLOYEES_DATA_FETCHED } from '../constants'
+import { SAVE_EMPLOYEES, GET_EMPLOYEES } from '../constants'
+import { saveEmployees } from '../actions'
 
-export function* homeSaga() {
+function* getEmployees(payloadData) {
   try {
     const options = {
       path: 'employees',
     }
+    const response = yield call([Request, 'get'], options)
 
-    const data = yield call([Request, 'post'], options)
-    yield put({ type: EMPLOYEES_DATA_FETCHED, data })
+    if (response.data) {
+      yield put(saveEmployees({ employees: response.data }))
+    }
   } catch (error) {
     console.log('error', error)
   }
+}
+
+export function* homeSaga() {
+  yield takeLatest(GET_EMPLOYEES, getEmployees)
 }

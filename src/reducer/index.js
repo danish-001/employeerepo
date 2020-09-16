@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import employee from './employee'
+import home from '../features/home/reducers'
 
 const reducer = combineReducers({
-  employee,
+  home,
 })
 
 export default reducer

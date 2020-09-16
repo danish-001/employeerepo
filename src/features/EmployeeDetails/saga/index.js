@@ -8,14 +8,13 @@ import {
 import Request from '../../../api/request'
 
 export function* employeeSaga() {
-  try {
-    const options = {
-      path: 'employees',
-    }
-
-    const data = yield call([Request, 'get'], options)
-    yield put({ type: EMPLOYEE_DATA_FETCHED }, data)
-  } catch (error) {
-    console.log('error', error)
-  }
+  // try {
+  //   const options = {
+  //     path: 'employees',
+  //   }
+  //   const data = yield call([Request, 'get'], options)
+  //   yield put({ type: EMPLOYEE_DATA_FETCHED }, data)
+  // } catch (error) {
+  //   console.log('error', error)
+  // }
 }

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 type IProps = {
   path: string,
   method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE',

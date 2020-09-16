@@ -1,8 +1,6 @@
 import React from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
-import styles from './styles'
 import { isIPhoneX } from '../../constants/helper'
-import sagas from '../../sagas/index'
 
 function ListItem({ item, onPress }) {
   return (
@@ -36,17 +34,17 @@ function ListItem({ item, onPress }) {
                 }}
               >
                 <Text style={{ fontSize: 20, color: 'white' }}>
-                  {item.name.charAt(0)}
+                  {item.employee_name.charAt(0)}
                 </Text>
               </View>
             </View>
             <View style={{ flex: 8.5, margin: 12, paddingLeft: 18 }}>
               <Text
-                style={{ fontSize: 27, fontWeight: '600', letterSpacing: 1.5 }}
+                style={{ fontSize: 27, fontWeight: '500', letterSpacing: 1.5 }}
               >
-                {item.name}
+                {item.employee_name}
               </Text>
-              <Text style={{ fontSize: 18 }}>₹ {item.salary}</Text>
+              <Text style={{ fontSize: 18 }}>₹ {item.employee_salary}</Text>
             </View>
           </TouchableOpacity>
           <View
