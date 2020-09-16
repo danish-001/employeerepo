@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import ListItem from '../../../../components/LIstItem'
+import ListItem from '../../../../components/ListItem'
 
 export class Dashboard extends Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ export class Dashboard extends Component {
 
   render() {
     const { employees, navigation } = this.props
-    console.log({ employees })
+
     return (
       <View>
         <ListItem
