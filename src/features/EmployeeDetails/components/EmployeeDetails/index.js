@@ -20,33 +20,25 @@ export class EmployeeDetails extends Component<Props> {
             <View style={styles.container}>
               <View>
                 <Field
-                  name="title"
+                  name="employee-name"
                   component={InputField}
-                  placeholder="ReView Title (e.g. movie / series)"
+                  placeholder="Employee Name"
                 />
               </View>
               <View>
                 <Field
                   multiline
-                  name="body"
+                  name="employee-salary"
                   component={InputField}
-                  placeholder="Description"
-                  height={140}
+                  placeholder="Salary in Rupees"
                 />
               </View>
               <View>
                 <Field
-                  name="rating"
+                  name="employee-age"
                   component={InputField}
-                  placeholder="Rating (1-5)"
+                  placeholder="Employee Age"
                   keyboardType="numeric"
-                />
-              </View>
-              <View>
-                <Field
-                  name="author"
-                  component={InputField}
-                  placeholder="Enter Your Name"
                 />
               </View>
               <View>
