@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
-import styles from './styles'
+import styles, { getRandomColor } from './styles'
 
 function ListItem({ item, onPress }) {
   return (
@@ -13,7 +13,12 @@ function ListItem({ item, onPress }) {
             style={styles.mainContainer}
           >
             <View style={styles.aliasMainView}>
-              <View style={styles.alianInternalView}>
+              <View
+                style={[
+                  styles.alianInternalView,
+                  { backgroundColor: getRandomColor() },
+                ]}
+              >
                 <Text style={styles.aliasText}>
                   {item.employee_name.charAt(0)}
                 </Text>

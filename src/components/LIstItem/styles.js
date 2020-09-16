@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { isIPhoneX } from '../../constants/helper'
 
-const getRandomColor = () => {
+export const getRandomColor = () => {
   return (
     'rgb(' +
     Math.floor(Math.random() * 256) +
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     flex: 1.5,
   },
   alianInternalView: {
-    backgroundColor: getRandomColor(),
     width: 50,
     height: 50,
     borderRadius: 50,
