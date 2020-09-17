@@ -4,7 +4,7 @@ import styles from './styles'
 
 const InputField = (props) => {
   const { placeholder, meta, input, multiline, height, keyboardType } = props
-  console.log(meta.warning)
+
   return (
     <View>
       <TextInput

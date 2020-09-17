@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Directions } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   card: {
@@ -15,6 +16,19 @@ const styles = StyleSheet.create({
   cardContent: {
     marginHorizontal: 18,
     marginVertical: 10,
+  },
+  buttonAddEmployee: {
+    // flex: 1,
+    position: 'absolute',
+    flexDirection: 'column-reverse',
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+    marginBottom: 2,
+    borderWidth: 1,
+    borderColor: '#f2f2f2',
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: 'red',
   },
 })
 

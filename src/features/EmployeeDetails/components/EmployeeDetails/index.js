@@ -14,47 +14,30 @@ type Props = {
 }
 export class EmployeeDetails extends Component<Props> {
   componentDidMount() {
-    const {
-      defaultValues,
-      handleSubmit,
-      users,
-      editReview,
-      navigation,
-    } = this.props
+    const { route, dispatch } = this.props
+    const defaultValues = route.params.defaultValues
+
     if (defaultValues) {
       dispatch(change('employeeForm', 'id', defaultValues.id))
       dispatch(
-        change('employeeForm', 'employeeName', defaultValues.employeeName)
+        change('employeeForm', 'employeeName', defaultValues.employee_name)
       )
       dispatch(
-        change(
-          'employeeForm',
-          'employeeSalary',
-          defaultValues.employeeSalary.toString()
-        )
+        change('employeeForm', 'employeeSalary', defaultValues.employee_salary)
       )
       dispatch(
-        change(
-          'employeeForm',
-          'employeeAge',
-          defaultValues.employeeAge.toString()
-        )
+        change('employeeForm', 'employeeAge', defaultValues.employee_age)
       )
     }
   }
 
   onSubmit = (values) => {
     console.log({ values })
+    // craterEmployee({ params: values })
   }
 
   render() {
-    const {
-      defaultValues,
-      handleSubmit,
-      users,
-      editReview,
-      navigation,
-    } = this.props
+    const { handleSubmit, defaultValues } = this.props
 
     return (
       <View>
@@ -69,7 +52,7 @@ export class EmployeeDetails extends Component<Props> {
                   placeholder="Name"
                 />
               </View>
-              <Text style={styles.inputTitle}> Employee Salary</Text>
+              <Text style={styles.inputTitle}>Employee Salary</Text>
               <View>
                 <Field
                   multiline
@@ -79,7 +62,7 @@ export class EmployeeDetails extends Component<Props> {
                   keyboardType="numeric"
                 />
               </View>
-              <Text style={styles.inputTitle}> Employee Age</Text>
+              <Text style={styles.inputTitle}>Employee Age</Text>
               <View>
                 <Field
                   name="employeeAge"
