@@ -16,6 +16,13 @@ const styles = StyleSheet.create({
     marginTop: 2,
     textAlign: 'center',
   },
+  warningText: {
+    color: 'orange',
+    fontWeight: 'bold',
+    marginBottom: 4,
+    marginTop: 2,
+    textAlign: 'center',
+  },
 })
 
 export default styles

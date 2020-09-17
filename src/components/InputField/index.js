@@ -4,6 +4,7 @@ import styles from './styles'
 
 const InputField = (props) => {
   const { placeholder, meta, input, multiline, height, keyboardType } = props
+  console.log(meta.warning)
   return (
     <View>
       <TextInput
@@ -17,6 +18,7 @@ const InputField = (props) => {
       />
       {meta.error && meta.submitFailed && (
         <Text style={styles.errorText}>{meta.error}</Text>
+        // <Text style={styles.warningText}>{meta.warning}</Text>
       )}
     </View>
   )

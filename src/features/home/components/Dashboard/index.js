@@ -15,7 +15,9 @@ export class Dashboard extends Component {
       <View>
         <ListItem
           item={employees ? employees : []}
-          onPress={(item) => navigation.navigate('Employee-Details', item)}
+          onPress={(defaultValues) =>
+            navigation.navigate('Employee-Details', defaultValues)
+          }
         />
       </View>
     )

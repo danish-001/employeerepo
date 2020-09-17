@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, View, KeyboardAvoidingView, Text } from 'react-native'
+import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
-import { Field, reduxForm, change } from 'redux-form'
 import FlatButton from '../../../../components/FormButton/button'
 import styles from './styles'
 
@@ -9,72 +9,80 @@ type Props = {
   users: Array<any>,
   editReview: Function,
   navigation: any,
+  handleSubmit: Function,
+  defaultValues: any,
 }
 export class EmployeeDetails extends Component<Props> {
+  componentDidMount() {
+    const {
+      defaultValues,
+      handleSubmit,
+      users,
+      editReview,
+      navigation,
+    } = this.props
+    if (defaultValues) {
+      dispatch(change('employeeForm', 'id', defaultValues.id))
+      dispatch(
+        change('employeeForm', 'employeeName', defaultValues.employeeName)
+      )
+      dispatch(
+        change(
+          'employeeForm',
+          'employeeSalary',
+          defaultValues.employeeSalary.toString()
+        )
+      )
+      dispatch(
+        change(
+          'employeeForm',
+          'employeeAge',
+          defaultValues.employeeAge.toString()
+        )
+      )
+    }
+  }
+
+  onSubmit = (values) => {
+    console.log({ values })
+  }
+
   render() {
-    const { users, editReview, navigation } = this.props
+    const {
+      defaultValues,
+      handleSubmit,
+      users,
+      editReview,
+      navigation,
+    } = this.props
+
     return (
       <View>
         <ScrollView keyboardShouldPersistTaps="handled">
           <KeyboardAvoidingView>
             <View style={styles.container}>
-              <Text
-                style={{
-                  letterSpacing: 1,
-                  // textAlign: 'center',
-                  fontWeight: 'bold',
-                  fontSize: 18,
-                  paddingLeft: 10,
-                  paddingVertical: 10,
-                }}
-              >
-                Employee Name
-              </Text>
+              <Text style={styles.inputTitle}>Employee Name</Text>
               <View>
                 <Field
-                  name="employee-name"
+                  name="employeeName"
                   component={InputField}
                   placeholder="Name"
                 />
               </View>
-              <Text
-                style={{
-                  letterSpacing: 1,
-                  // textAlign: 'center',
-                  fontWeight: 'bold',
-                  fontSize: 18,
-                  paddingLeft: 10,
-                  paddingVertical: 10,
-                }}
-              >
-                {' '}
-                Employee Salary
-              </Text>
+              <Text style={styles.inputTitle}> Employee Salary</Text>
               <View>
                 <Field
                   multiline
-                  name="employee-salary"
+                  name="employeeSalary"
                   component={InputField}
                   placeholder="Salary (in Rupees)"
                   keyboardType="numeric"
                 />
               </View>
-              <Text
-                style={{
-                  letterSpacing: 1,
-                  // textAlign: 'center',
-                  fontWeight: 'bold',
-                  fontSize: 18,
-                  paddingLeft: 10,
-                  paddingVertical: 10,
-                }}
-              >
-                {' '}
-                Employee Age
-              </Text>
+              <Text style={styles.inputTitle}> Employee Age</Text>
               <View>
                 <Field
-                  name="employee-age"
+                  name="employeeAge"
                   component={InputField}
                   placeholder="Age"
                   keyboardType="numeric"
@@ -83,7 +91,7 @@ export class EmployeeDetails extends Component<Props> {
               <View>
                 <FlatButton
                   text="Submit"
-                  onPress={() => console.log('button pressed')}
+                  onPress={handleSubmit(this.onSubmit)}
                 />
               </View>
             </View>
@@ -94,6 +102,4 @@ export class EmployeeDetails extends Component<Props> {
   }
 }
 
-export default reduxForm({
-  form: 'employeeForm',
-})(EmployeeDetails)
+export default EmployeeDetails

@@ -4,7 +4,7 @@ initialState = {
   employeeDetails: [],
 }
 
-const employeeDetail = (state = { initialState }, action) => {
+const employeeDetail = (state = initialState, action) => {
   switch (action.type) {
     case types.SHOW_EMPLOYEE_DETAILS: {
       return {
@@ -12,7 +12,7 @@ const employeeDetail = (state = { initialState }, action) => {
       }
     }
     default: {
-      return state
+      return { ...state }
     }
   }
 }
