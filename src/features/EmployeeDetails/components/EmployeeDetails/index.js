@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, View, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, View, KeyboardAvoidingView, Text } from 'react-native'
 import InputField from '../../../../components/InputField/index'
 import { Field, reduxForm, change } from 'redux-form'
 import FlatButton from '../../../../components/FormButton/button'
@@ -18,26 +18,65 @@ export class EmployeeDetails extends Component<Props> {
         <ScrollView keyboardShouldPersistTaps="handled">
           <KeyboardAvoidingView>
             <View style={styles.container}>
+              <Text
+                style={{
+                  letterSpacing: 1,
+                  // textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: 18,
+                  paddingLeft: 10,
+                  paddingVertical: 10,
+                }}
+              >
+                Employee Name
+              </Text>
               <View>
                 <Field
                   name="employee-name"
                   component={InputField}
-                  placeholder="Employee Name"
+                  placeholder="Name"
                 />
               </View>
+              <Text
+                style={{
+                  letterSpacing: 1,
+                  // textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: 18,
+                  paddingLeft: 10,
+                  paddingVertical: 10,
+                }}
+              >
+                {' '}
+                Employee Salary
+              </Text>
               <View>
                 <Field
                   multiline
                   name="employee-salary"
                   component={InputField}
-                  placeholder="Salary in Rupees"
+                  placeholder="Salary (in Rupees)"
+                  keyboardType="numeric"
                 />
               </View>
+              <Text
+                style={{
+                  letterSpacing: 1,
+                  // textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: 18,
+                  paddingLeft: 10,
+                  paddingVertical: 10,
+                }}
+              >
+                {' '}
+                Employee Age
+              </Text>
               <View>
                 <Field
                   name="employee-age"
                   component={InputField}
-                  placeholder="Employee Age"
+                  placeholder="Age"
                   keyboardType="numeric"
                 />
               </View>
