@@ -14,21 +14,21 @@ export const getRandomColor = () => {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    borderRadius: 6,
-    elevation: 3,
-    backgroundColor: '#fff',
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: '#333',
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    marginVertical: 8,
-    marginHorizontal: 2,
-  },
-  cardContent: {
-    marginHorizontal: 18,
-    marginVertical: 10,
-  },
+  // card: {
+  //   borderRadius: 6,
+  //   elevation: 3,
+  //   backgroundColor: '#fff',
+  //   shadowOffset: { width: 1, height: 1 },
+  //   shadowColor: '#333',
+  //   shadowOpacity: 0.3,
+  //   shadowRadius: 2,
+  //   marginVertical: 8,
+  //   marginHorizontal: 2,
+  // },
+  // cardContent: {
+  //   marginHorizontal: 18,
+  //   marginVertical: 10,
+  // },
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  aliasText: { fontSize: 20, color: 'white' },
+  aliasText: { fontSize: 22, color: '#fff' },
   employeeDataView: { flex: 8.5, margin: 12, paddingLeft: 18 },
   employeeName: { fontSize: 27, fontWeight: '500', letterSpacing: 1.5 },
   partitionView: {

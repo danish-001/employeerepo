@@ -15,19 +15,25 @@ type Props = {
 export class EmployeeDetails extends Component<Props> {
   componentDidMount() {
     const { route, dispatch } = this.props
-    const defaultValues = route.params.defaultValues
+    if (route.params) {
+      const defaultValues = route.params.defaultValues
 
-    if (defaultValues) {
-      dispatch(change('employeeForm', 'id', defaultValues.id))
-      dispatch(
-        change('employeeForm', 'employeeName', defaultValues.employee_name)
-      )
-      dispatch(
-        change('employeeForm', 'employeeSalary', defaultValues.employee_salary)
-      )
-      dispatch(
-        change('employeeForm', 'employeeAge', defaultValues.employee_age)
-      )
+      if (defaultValues) {
+        dispatch(change('employeeForm', 'id', defaultValues.id))
+        dispatch(
+          change('employeeForm', 'employeeName', defaultValues.employee_name)
+        )
+        dispatch(
+          change(
+            'employeeForm',
+            'employeeSalary',
+            defaultValues.employee_salary
+          )
+        )
+        dispatch(
+          change('employeeForm', 'employeeAge', defaultValues.employee_age)
+        )
+      }
     }
   }
 
