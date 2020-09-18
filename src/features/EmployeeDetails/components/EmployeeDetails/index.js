@@ -20,30 +20,23 @@ export class EmployeeDetails extends Component<Props> {
 
       if (defaultValues) {
         dispatch(change('employeeForm', 'id', defaultValues.id))
+        dispatch(change('employeeForm', 'name', defaultValues.employee_name))
         dispatch(
-          change('employeeForm', 'employeeName', defaultValues.employee_name)
+          change('employeeForm', 'salary', defaultValues.employee_salary)
         )
-        dispatch(
-          change(
-            'employeeForm',
-            'employeeSalary',
-            defaultValues.employee_salary
-          )
-        )
-        dispatch(
-          change('employeeForm', 'employeeAge', defaultValues.employee_age)
-        )
+        dispatch(change('employeeForm', 'age', defaultValues.employee_age))
       }
     }
   }
 
   onSubmit = (values) => {
-    console.log({ values })
+    const { createEmployee, navigation } = this.props
+    createEmployee({ params: values, navigation })
     // craterEmployee({ params: values })
   }
 
   render() {
-    const { handleSubmit, defaultValues } = this.props
+    const { handleSubmit, defaultValues, loading } = this.props
 
     return (
       <View>
@@ -52,17 +45,13 @@ export class EmployeeDetails extends Component<Props> {
             <View style={styles.container}>
               <Text style={styles.inputTitle}>Employee Name</Text>
               <View>
-                <Field
-                  name="employeeName"
-                  component={InputField}
-                  placeholder="Name"
-                />
+                <Field name="name" component={InputField} placeholder="Name" />
               </View>
               <Text style={styles.inputTitle}>Employee Salary</Text>
               <View>
                 <Field
                   multiline
-                  name="employeeSalary"
+                  name="salary"
                   component={InputField}
                   placeholder="Salary (in Rupees)"
                   keyboardType="numeric"
@@ -71,7 +60,7 @@ export class EmployeeDetails extends Component<Props> {
               <Text style={styles.inputTitle}>Employee Age</Text>
               <View>
                 <Field
-                  name="employeeAge"
+                  name="age"
                   component={InputField}
                   placeholder="Age"
                   keyboardType="numeric"
@@ -81,6 +70,7 @@ export class EmployeeDetails extends Component<Props> {
                 <FlatButton
                   text="Submit"
                   onPress={handleSubmit(this.onSubmit)}
+                  loading={loading}
                 />
               </View>
             </View>

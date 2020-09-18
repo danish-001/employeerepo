@@ -12,6 +12,13 @@ const homeReducer = (state = { initialState }, action) => {
         employees: action.payload.employees,
       }
     }
+
+    case types.SAVE_EMPLOYEES: {
+      return {
+        ...state,
+        employees: action.payload.employees,
+      }
+    }
     default: {
       return state
     }

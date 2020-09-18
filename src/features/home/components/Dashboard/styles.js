@@ -18,16 +18,18 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonAddEmployee: {
-    flex: 1,
+    color: '#fff',
+  },
+  buttonContainer: {
+    width: 74,
+    height: 74,
+    borderRadius: 74,
     position: 'absolute',
     bottom: 40,
     right: 30,
-    flexDirection: 'column-reverse',
-    justifyContent: 'flex-end',
-    alignSelf: 'flex-end',
-    padding: 12,
     backgroundColor: 'gray',
-    color: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 

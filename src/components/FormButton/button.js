@@ -1,12 +1,16 @@
 import React from 'react'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { TouchableOpacity, View, Text, ActivityIndicator } from 'react-native'
 import styles from './styles'
 
-const flatButton = ({ text, onPress }) => {
+const flatButton = ({ text, onPress, loading }) => {
   return (
     <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
       <View style={styles.button}>
-        <Text style={styles.buttonText}>{text}</Text>
+        {!loading ? (
+          <Text style={styles.buttonText}>{text}</Text>
+        ) : (
+          <ActivityIndicator size="small" />
+        )}
       </View>
     </TouchableOpacity>
   )

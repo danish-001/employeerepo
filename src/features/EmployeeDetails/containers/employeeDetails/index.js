@@ -2,17 +2,17 @@ import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { validate } from './validation'
 import EmployeeDetails from '../../components/EmployeeDetails'
-import { employeeDetails } from '../../actions/index'
+import { createEmployee } from '../../actions/index'
 import employeeDetail from '../../reducers'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ employee }) => {
   return {
-    employee: state.employeeDetail,
+    loading: employee.createEmployeeLoading,
   }
 }
 
 const mapDispatchToProps = {
-  employeeDetails,
+  createEmployee,
 }
 
 const employeeForm = reduxForm({
