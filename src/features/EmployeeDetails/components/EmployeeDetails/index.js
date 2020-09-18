@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useRef } from 'react'
 import { ScrollView, View, KeyboardAvoidingView, Text } from 'react-native'
 import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
@@ -15,6 +15,11 @@ type Props = {
 export class EmployeeDetails extends Component<Props> {
   componentDidMount() {
     const { route, dispatch } = this.props
+
+    // const ref_name = useRef()
+    // const ref_salary = useRef()
+    // const ref_age = useRef()
+
     if (route.params) {
       const defaultValues = route.params.defaultValues
 
