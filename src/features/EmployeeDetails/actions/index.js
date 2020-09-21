@@ -3,6 +3,7 @@ import {
   CREATE_EMPLOYEE,
   SPINNER,
   SAVE_EMPLOYEE,
+  DELETE_EMPLOYEE,
 } from '../constants'
 
 export const employeeDetails = (payload = {}) => ({
@@ -22,5 +23,10 @@ export const spinner = (payload = {}) => ({
 
 export const saveEmployee = (payload = {}) => ({
   type: SAVE_EMPLOYEE,
+  payload,
+})
+
+export const deleteEmployee = (payload = {}) => ({
+  type: DELETE_EMPLOYEE,
   payload,
 })

@@ -20,6 +20,18 @@ const employeeDetail = (state = initialState, action) => {
       }
     }
 
+    case types.DELETE_EMPLOYEE: {
+      const id = action.payload.id
+      const filterEmployee = state.employees.filter(
+        (employee) => employee.id !== id
+      )
+
+      return {
+        ...state,
+        employees: filterEmployee,
+      }
+    }
+
     default: {
       return { ...state }
     }
