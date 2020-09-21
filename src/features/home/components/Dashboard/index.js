@@ -11,7 +11,7 @@ export class Dashboard extends Component {
   }
 
   render() {
-    const { employees, navigation, route } = this.props
+    const { employees, navigation } = this.props
 
     return (
       <View style={{ display: 'flex' }}>

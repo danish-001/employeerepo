@@ -1,7 +1,12 @@
-import { SHOW_EMPLOYEE_DETAILS, CREATE_EMPLOYEE, SPINNER } from '../constants'
+import {
+  SHOW_EMPLOYEE,
+  CREATE_EMPLOYEE,
+  SPINNER,
+  SAVE_EMPLOYEE,
+} from '../constants'
 
 export const employeeDetails = (payload = {}) => ({
-  type: SHOW_EMPLOYEE_DETAILS,
+  type: SHOW_EMPLOYEE,
   payload,
 })
 
@@ -12,5 +17,10 @@ export const createEmployee = (payload = {}) => ({
 
 export const spinner = (payload = {}) => ({
   type: SPINNER,
+  payload,
+})
+
+export const saveEmployee = (payload = {}) => ({
+  type: SAVE_EMPLOYEE,
   payload,
 })

@@ -1,7 +1,8 @@
 import * as types from '../constants'
 
-initialState = {
+const initialState = {
   createEmployeeLoading: false,
+  employees: [],
 }
 
 const employeeDetail = (state = initialState, action) => {
@@ -13,11 +14,12 @@ const employeeDetail = (state = initialState, action) => {
       }
     }
 
-    case types.SHOW_EMPLOYEE_DETAILS: {
+    case types.SHOW_EMPLOYEE: {
       return {
         ...state,
       }
     }
+
     default: {
       return { ...state }
     }

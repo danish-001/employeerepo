@@ -1,4 +1,5 @@
 import * as types from '../constants'
+import { SAVE_EMPLOYEE } from '../../EmployeeDetails/constants'
 
 const initialState = {
   employees: [],
@@ -13,10 +14,19 @@ const homeReducer = (state = { initialState }, action) => {
       }
     }
 
-    case types.SAVE_EMPLOYEES: {
+    case SAVE_EMPLOYEE: {
+      const oldDetail = action.payload.employee
+
+      const newDetail = {
+        // id: oldDetail.id,
+        id: Math.random(),
+        employee_name: oldDetail.name,
+        employee_salary: oldDetail.salary,
+        employee_age: oldDetail.age,
+      }
       return {
         ...state,
-        employees: action.payload.employees,
+        employees: [...[newDetail], ...state.employees],
       }
     }
     default: {

@@ -1,12 +1,8 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
-import {
-  CREATE_EMPLOYEE,
-  EMPLOYEE_DATA_UPDATE,
-  EMPLOYEE_DATA_FETCHED,
-} from '../constants'
+import { call, put, takeLatest, delay } from 'redux-saga/effects'
+import { CREATE_EMPLOYEE } from '../constants'
 
 import Request from '../../../api/request'
-import { spinner } from '../actions'
+import { spinner, saveEmployee } from '../actions'
 
 export function* createEmployee(payloadData) {
   try {
@@ -17,9 +13,15 @@ export function* createEmployee(payloadData) {
       body: payloadData.payload.params,
     }
 
-    const response = yield call([Request, 'post'], options)
-
+    // const response = yield call([Request, 'post'], options)
+    yield delay(600)
+    const response = {
+      status: 'success',
+    }
     if (response.status === 'success') {
+      console.log(response)
+      yield put(saveEmployee({ employee: payloadData.payload.params }))
+
       payloadData.payload.navigation.goBack()
     }
   } catch (error) {
