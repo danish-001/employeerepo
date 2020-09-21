@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingVertical: 10,
   },
+  dualButtonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+  },
 })
 
 export default styles

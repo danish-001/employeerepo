@@ -9,7 +9,7 @@ export function* createEmployee(payloadData) {
     yield put(spinner({ createEmployeeLoading: true }))
 
     const options = {
-      path: 'create',
+      path: 'create/',
       body: payloadData.payload.params,
     }
 

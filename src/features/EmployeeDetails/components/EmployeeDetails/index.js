@@ -4,6 +4,7 @@ import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
 import FlatButton from '../../../../components/FormButton/button'
 import styles from './styles'
+import { FlatList } from 'react-native-gesture-handler'
 
 type Props = {
   users: Array<any>,
@@ -37,7 +38,7 @@ export class EmployeeDetails extends Component<Props> {
   }
 
   render() {
-    const { handleSubmit, loading } = this.props
+    const { handleSubmit, loading, route } = this.props
 
     const empRef = {}
     return (
@@ -86,11 +87,27 @@ export class EmployeeDetails extends Component<Props> {
                 />
               </View>
               <View>
-                <FlatButton
-                  text="Submit"
-                  onPress={handleSubmit(this.onSubmit)}
-                  loading={loading}
-                />
+                {route.params.defaultValues ? (
+                  <View style={styles.dualButtonContainer}>
+                    <FlatButton
+                      text="Update"
+                      onPress={handleSubmit(this.onSubmit)}
+                      loading={loading}
+                    />
+                    <FlatButton
+                      text="Delete"
+                      onPress={handleSubmit(this.onSubmit)}
+                      loading={loading}
+                      backgroundColor="orangered"
+                    />
+                  </View>
+                ) : (
+                  <FlatButton
+                    text="Submit"
+                    onPress={handleSubmit(this.onSubmit)}
+                    loading={loading}
+                  />
+                )}
               </View>
             </View>
           </KeyboardAvoidingView>
