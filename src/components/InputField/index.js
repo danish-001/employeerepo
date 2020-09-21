@@ -3,7 +3,17 @@ import { View, TextInput, Text } from 'react-native'
 import styles from './styles'
 
 const InputField = (props) => {
-  const { placeholder, meta, input, multiline, height, keyboardType } = props
+  const {
+    placeholder,
+    meta,
+    input,
+    multiline,
+    height,
+    keyboardType,
+    onSubmitEditing,
+    ref,
+    autoFocus,
+  } = props
 
   return (
     <View>
@@ -15,6 +25,9 @@ const InputField = (props) => {
         multiline={multiline}
         height={height}
         keyboardType={keyboardType}
+        onSubmitEditing={onSubmitEditing}
+        ref={ref}
+        autoFocus={autoFocus}
       />
       {meta.error && meta.submitFailed && (
         <Text style={styles.errorText}>{meta.error}</Text>
