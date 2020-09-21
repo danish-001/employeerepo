@@ -11,7 +11,7 @@ const InputField = (props) => {
     height,
     keyboardType,
     onSubmitEditing,
-    ref,
+    refLink,
     autoFocus,
   } = props
 
@@ -26,7 +26,7 @@ const InputField = (props) => {
         height={height}
         keyboardType={keyboardType}
         onSubmitEditing={onSubmitEditing}
-        ref={ref}
+        ref={refLink}
         autoFocus={autoFocus}
       />
       {meta.error && meta.submitFailed && (

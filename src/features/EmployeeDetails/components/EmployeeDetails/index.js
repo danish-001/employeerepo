@@ -1,11 +1,5 @@
-import React, { Component, refs } from 'react'
-import {
-  ScrollView,
-  View,
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-} from 'react-native'
+import React, { Component } from 'react'
+import { ScrollView, View, KeyboardAvoidingView, Text } from 'react-native'
 import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
 import FlatButton from '../../../../components/FormButton/button'
@@ -19,16 +13,6 @@ type Props = {
   defaultValues: any,
 }
 export class EmployeeDetails extends Component<Props> {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      name: '',
-      salary: '',
-      age: '',
-    }
-  }
-
   componentDidMount = () => {
     const { route, dispatch } = this.props
 
@@ -46,13 +30,6 @@ export class EmployeeDetails extends Component<Props> {
     }
   }
 
-  // // // variable to hold the references of the textfields
-  // // inputs = {}
-  // // // function to focus the field
-  // // focusTheField = (id) => {
-  // //   this.inputs[id].focus()
-  // // }
-
   onSubmit = (values) => {
     const { createEmployee, navigation } = this.props
     createEmployee({ params: values, navigation })
@@ -60,10 +37,9 @@ export class EmployeeDetails extends Component<Props> {
   }
 
   render() {
-    const { handleSubmit, defaultValues, loading } = this.props
+    const { handleSubmit, loading } = this.props
 
-    const { name, salary, age } = this.state
-
+    const empRef = {}
     return (
       <View>
         <ScrollView keyboardShouldPersistTaps="handled">
@@ -71,34 +47,14 @@ export class EmployeeDetails extends Component<Props> {
             <View style={styles.container}>
               <Text style={styles.inputTitle}>Employee Name</Text>
               <View>
-                {/* <TextInput
-                  ref={'nameRef'}
-                  value={name}
-                  autoFocus={true}
-                  style={{
-                    height: 44,
-                    marginHorizontal: 10,
-                    padding: 10,
-                    borderColor: 'lightgray',
-                    borderWidth: 1,
-                    borderRadius: 10,
-                  }}
-                  onChange={(name) => {
-                    this.setState({ name: name })
-                  }}
-                  onSubmitEditing={() => {
-                    this.refs.salaryRef.focus()
-                  }}
-                ></TextInput> */}
                 <Field
-                  ref={'nameRef'}
+                  refLink={(ref) => (empRef.name = ref)}
                   name="name"
                   component={InputField}
                   placeholder="Name"
-                  value={name}
                   autoFocus={true}
-                  onChange={(name) => {
-                    this.setState({ name: name })
+                  onSubmitEditing={() => {
+                    empRef.salary.focus()
                   }}
                 />
               </View>
@@ -106,62 +62,28 @@ export class EmployeeDetails extends Component<Props> {
               <View>
                 <Field
                   multiline
-                  ref={'salaryRef'}
+                  refLink={(ref) => (empRef.salary = ref)}
                   name="salary"
                   component={InputField}
-                  placeholder="Salary(in Rupees)"
+                  placeholder="Salary (in Rupees)"
                   keyboardType="numeric"
-                  value={salary}
-                  onChange={(salary) => this.setState({ salary: salary })}
-                />
-                {/* <TextInput
-                  ref={'salaryRef'}
-                  value={name}
-                  style={{
-                    height: 44,
-                    marginHorizontal: 10,
-                    padding: 10,
-                    borderColor: 'lightgray',
-                    borderWidth: 1,
-                    borderRadius: 10,
-                  }}
-                  onChange={(salary) => {
-                    this.setState({ salary: salary })
-                  }}
                   onSubmitEditing={() => {
-                    this.refs.ageRef.focus()
+                    empRef.age.focus()
                   }}
-                ></TextInput> */}
+                />
               </View>
               <Text style={styles.inputTitle}>Employee Age</Text>
               <View>
                 <Field
                   name="age"
-                  ref={'ageRef'}
+                  refLink={(ref) => (empRef.age = ref)}
                   component={InputField}
                   placeholder="Age"
                   keyboardType="numeric"
-                  value={age}
-                  onChange={(age) => this.setState({ age: age })}
-                />
-                {/* <TextInput
-                  ref={'ageRef'}
-                  value={age}
-                  style={{
-                    height: 44,
-                    marginHorizontal: 10,
-                    padding: 10,
-                    borderColor: 'lightgray',
-                    borderWidth: 1,
-                    borderRadius: 10,
-                  }}
-                  onChange={(age) => {
-                    this.setState({ age: age })
-                  }}
                   onSubmitEditing={() => {
-                    alert('ok')
+                    alert('value submitted !!!')
                   }}
-                ></TextInput> */}
+                />
               </View>
               <View>
                 <FlatButton
