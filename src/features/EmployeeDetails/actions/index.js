@@ -4,6 +4,11 @@ import {
   SPINNER,
   SAVE_EMPLOYEE,
   DELETE_EMPLOYEE,
+  DELETE_SPINNER,
+  UPDATE_EMPLOYEE,
+  SET_REMOVED_EMPLOYEE,
+  UPDATE_SPINNER,
+  SET_UPDATE_EMPLOYEE,
 } from '../constants'
 
 export const employeeDetails = (payload = {}) => ({
@@ -21,6 +26,16 @@ export const spinner = (payload = {}) => ({
   payload,
 })
 
+export const deleteSpinner = (payload = {}) => ({
+  type: DELETE_SPINNER,
+  payload,
+})
+
+export const updateSpinner = (payload = {}) => ({
+  type: UPDATE_SPINNER,
+  payload,
+})
+
 export const saveEmployee = (payload = {}) => ({
   type: SAVE_EMPLOYEE,
   payload,
@@ -28,5 +43,20 @@ export const saveEmployee = (payload = {}) => ({
 
 export const deleteEmployee = (payload = {}) => ({
   type: DELETE_EMPLOYEE,
+  payload,
+})
+
+export const updateEmployee = (payload = {}) => ({
+  type: UPDATE_EMPLOYEE,
+  payload,
+})
+
+export const setUpdateEmployee = (payload = {}) => ({
+  type: SET_UPDATE_EMPLOYEE,
+  payload,
+})
+
+export const setRemovedEmployee = (payload = {}) => ({
+  type: SET_REMOVED_EMPLOYEE,
   payload,
 })

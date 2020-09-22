@@ -17,9 +17,10 @@ export const validate = (values) => {
     errors.age = 'Age must be a number'
   } else if (Number(values.age) <= 13) {
     errors.age = 'You are too young for this job (14 to 60)'
-  } else if (Number(values.age) >= 61) {
-    errors.age = 'You are too old for this job (14 to 60)'
   }
+  // else if (Number(values.age) >= 61) {
+  //   errors.age = 'You are too old for this job (14 to 60)'
+  // }
 
   return errors
 }

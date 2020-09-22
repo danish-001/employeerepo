@@ -2,17 +2,24 @@ import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { validate } from './validation'
 import EmployeeDetails from '../../components/EmployeeDetails'
-import { createEmployee } from '../../actions/index'
-import employeeDetail from '../../reducers'
+import {
+  createEmployee,
+  deleteEmployee,
+  updateEmployee,
+} from '../../actions/index'
 
 const mapStateToProps = ({ employee }) => {
   return {
-    loading: employee.createEmployeeLoading,
+    createEmployeeLoading: employee.createEmployeeLoading,
+    deleteEmployeeLoading: employee.deleteEmployeeLoading,
+    updateEmployeeLoading: employee.updateEmployeeLoading,
   }
 }
 
 const mapDispatchToProps = {
   createEmployee,
+  deleteEmployee,
+  updateEmployee,
 }
 
 const employeeForm = reduxForm({

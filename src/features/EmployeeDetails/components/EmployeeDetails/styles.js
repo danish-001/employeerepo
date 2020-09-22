@@ -13,9 +13,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   dualButtonContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    marginHorizontal: 10,
     paddingHorizontal: 10,
   },
 })

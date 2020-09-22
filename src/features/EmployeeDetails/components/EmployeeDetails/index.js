@@ -4,11 +4,9 @@ import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
 import FlatButton from '../../../../components/FormButton/button'
 import styles from './styles'
-import { FlatList } from 'react-native-gesture-handler'
 
 type Props = {
   users: Array<any>,
-  editReview: Function,
   navigation: any,
   handleSubmit: Function,
   defaultValues: any,
@@ -34,11 +32,25 @@ export class EmployeeDetails extends Component<Props> {
   onSubmit = (values) => {
     const { createEmployee, navigation } = this.props
     createEmployee({ params: values, navigation })
-    // craterEmployee({ params: values })
+  }
+
+  updateEmployee = (id) => {
+    const { updateEmployee, navigation } = this.props
+    updateEmployee({ params: id, navigation })
+  }
+
+  deleteEmployee = (id) => {
+    const { deleteEmployee, navigation } = this.props
+    deleteEmployee({ params: id, navigation })
   }
 
   render() {
-    const { handleSubmit, loading, route } = this.props
+    const {
+      handleSubmit,
+      createEmployeeLoading,
+      deleteEmployeeLoading,
+      route,
+    } = this.props
 
     const empRef = {}
     return (
@@ -87,25 +99,29 @@ export class EmployeeDetails extends Component<Props> {
                 />
               </View>
               <View>
-                {route.params.defaultValues ? (
+                {route.params && route.params.defaultValues ? (
                   <View style={styles.dualButtonContainer}>
-                    <FlatButton
-                      text="Update"
-                      onPress={handleSubmit(this.onSubmit)}
-                      loading={loading}
-                    />
-                    <FlatButton
-                      text="Delete"
-                      onPress={handleSubmit(this.onSubmit)}
-                      loading={loading}
-                      backgroundColor="orangered"
-                    />
+                    <View style={{ flex: 1 }}>
+                      <FlatButton
+                        text="Update"
+                        onPress={handleSubmit(this.updateEmployee)}
+                        loading={createEmployeeLoading}
+                      />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                      <FlatButton
+                        text="Delete"
+                        onPress={handleSubmit(this.deleteEmployee)}
+                        loading={deleteEmployeeLoading}
+                        backgroundColor="orangered"
+                      />
+                    </View>
                   </View>
                 ) : (
                   <FlatButton
                     text="Submit"
                     onPress={handleSubmit(this.onSubmit)}
-                    loading={loading}
+                    loading={createEmployeeLoading}
                   />
                 )}
               </View>
