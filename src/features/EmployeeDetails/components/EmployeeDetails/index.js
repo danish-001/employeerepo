@@ -49,6 +49,7 @@ export class EmployeeDetails extends Component<Props> {
       handleSubmit,
       createEmployeeLoading,
       deleteEmployeeLoading,
+      updateEmployeeLoading,
       route,
     } = this.props
 
@@ -105,7 +106,7 @@ export class EmployeeDetails extends Component<Props> {
                       <FlatButton
                         text="Update"
                         onPress={handleSubmit(this.updateEmployee)}
-                        loading={createEmployeeLoading}
+                        loading={updateEmployeeLoading}
                       />
                     </View>
                     <View style={{ flex: 1 }}>

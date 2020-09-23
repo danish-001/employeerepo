@@ -1,4 +1,4 @@
-import { call, put, takeLatest, delay, takeEvery } from 'redux-saga/effects'
+import { call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import { CREATE_EMPLOYEE, DELETE_EMPLOYEE, UPDATE_EMPLOYEE } from '../constants'
 
 import Request from '../../../api/request'
@@ -43,9 +43,9 @@ export function* deleteEmployeeAt(payloadData) {
     }
 
     const response = yield call([Request, 'delete'], options)
-
+    console.log(response)
     if ((response.status = 'success')) {
-      yield put(setRemovedEmployee({ employeeID: payloadData.payload.id }))
+      yield put(setRemovedEmployee({ employee: payloadData.payload.id }))
       payloadData.payload.navigation.goBack()
     }
   } catch (error) {
@@ -58,7 +58,7 @@ export function* deleteEmployeeAt(payloadData) {
 export function* updateEmployeeAt(payloadData) {
   try {
     yield put(updateSpinner({ updateEmployeeLoading: true }))
-
+    console.log(updateSpinner({ updateEmployeeLoading: true }))
     const options = {
       path: `update/${payloadData.payload.params.id}`,
       body: payloadData.payload.params,

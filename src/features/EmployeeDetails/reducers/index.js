@@ -36,42 +36,6 @@ const employeeDetail = (state = initialState, action) => {
       }
     }
 
-    case types.SET_UPDATE_EMPLOYEE: {
-      const id = action.payload.id
-      const filterEmployee = state.employees.filter(
-        (employee) => employee.id !== id
-      )
-
-      return {
-        ...state,
-        employees: filterEmployee,
-      }
-    }
-
-    case types.SET_UPDATE_EMPLOYEE: {
-      const data = action.payload.employee
-
-      console.log('reducer SET_UPDATE_EMPLOYEE', data)
-      const employeesList = []
-
-      if (state.employees) {
-        state.employees.map((employee) => {
-          const { id } = employee
-          let value = employee
-
-          if (id === data.id) {
-            value = data
-          }
-          employeesList.push(value)
-        })
-      }
-
-      return {
-        ...state,
-        employees: employeesList,
-      }
-    }
-
     default: {
       return { ...state }
     }
