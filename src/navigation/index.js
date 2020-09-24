@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import Dashboard from '../features/home/containers/Dashboard'
 import EmployeeDetails from '../features/EmployeeDetails/containers/EmployeeDetails/index'
+import Colors from '../constants/Color'
 
 const Stack = createStackNavigator()
 
@@ -17,9 +18,9 @@ const navigator = () => {
           options={{
             title: 'Dashboard',
             headerStyle: {
-              backgroundColor: 'darkgray',
+              backgroundColor: Colors.darkGray,
             },
-            headerTintColor: '#fff',
+            headerTintColor: Colors.white,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 28,
@@ -32,9 +33,9 @@ const navigator = () => {
           options={{
             title: 'Employee Details',
             headerStyle: {
-              backgroundColor: 'darkgray',
+              backgroundColor: Colors.darkGray,
             },
-            headerTintColor: '#fff',
+            headerTintColor: Colors.white,
             headerTitleStyle: {
               fontWeight: 'bold',
               fontSize: 24,

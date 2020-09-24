@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../../../constants/Color'
 
 const styles = StyleSheet.create({
   card: {
     borderRadius: 6,
     elevation: 3,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     shadowOffset: { width: 1, height: 1 },
-    shadowColor: '#333',
+    shadowColor: Colors.lightGray,
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginVertical: 8,
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonAddEmployee: {
-    color: '#fff',
+    color: Colors.white,
   },
   buttonContainer: {
     width: 74,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     right: 30,
-    backgroundColor: 'gray',
+    backgroundColor: Colors.gray,
     justifyContent: 'center',
     alignItems: 'center',
   },
