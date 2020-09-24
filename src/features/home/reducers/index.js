@@ -38,7 +38,7 @@ const homeReducer = (state = { initialState }, action) => {
       const filterEmployee = state.employees.filter(
         (employee) => employee.id !== data
       )
-      console.log(filterEmployee)
+
       return {
         ...state,
         employees: filterEmployee,
