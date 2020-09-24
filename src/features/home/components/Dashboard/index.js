@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import ListItem from '../../../../components/ListItem'
 import { MaterialIcons } from '@expo/vector-icons'
+import Loader from '../../../../components/Loader/index'
 import styles from './styles'
 
 export class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     const { getEmployees } = this.props
     getEmployees()
@@ -15,13 +20,19 @@ export class Dashboard extends Component {
 
     return (
       <View style={{ display: 'flex' }}>
-        <ListItem
-          item={employees ? employees : []}
-          onPress={(defaultValues) =>
-            navigation.navigate('Employee-Details', { defaultValues })
-          }
-          style={{ flex: 9 }}
-        />
+        {!employees ? (
+          <Loader />
+        ) : (
+          <View>
+            <ListItem
+              item={employees ? employees : []}
+              onPress={(defaultValues) =>
+                navigation.navigate('Employee-Details', { defaultValues })
+              }
+              style={{ flex: 9 }}
+            />
+          </View>
+        )}
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => this.props.navigation.navigate('Employee-Details')}
