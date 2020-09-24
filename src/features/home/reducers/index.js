@@ -9,7 +9,7 @@ const initialState = {
   employees: [],
 }
 
-const homeReducer = (state = initialState, action) => {
+const homeReducer = (state = { initialState }, action) => {
   switch (action.type) {
     case types.SAVE_EMPLOYEES: {
       return {
@@ -34,10 +34,9 @@ const homeReducer = (state = initialState, action) => {
     }
 
     case SET_REMOVED_EMPLOYEE: {
-      console.log('inside reducer')
-      const id = action.payload
+      const data = action.payload.employee.params.id
       const filterEmployee = state.employees.filter(
-        (employee) => employee !== id
+        (employee) => employee.id !== data
       )
       console.log(filterEmployee)
       return {
@@ -60,7 +59,6 @@ const homeReducer = (state = initialState, action) => {
 
       if (state.employees) {
         state.employees.map((employee) => {
-          console.log(employee)
           const { id } = employee
           let value = employee
 
