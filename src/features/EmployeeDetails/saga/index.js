@@ -36,7 +36,7 @@ export function* createEmployee(payloadData) {
 
 export function* deleteEmployeeAt(payloadData) {
   try {
-    yield put(deleteSpinner({ deleteEmployeeLoading: true }))
+    yield put(spinner({ deleteEmployeeLoading: true }))
 
     const options = {
       path: `delete/${payloadData.payload.params.id}`,
@@ -52,13 +52,13 @@ export function* deleteEmployeeAt(payloadData) {
   } catch (error) {
     console.log('error', error)
   } finally {
-    yield put(deleteSpinner({ deleteEmployeeLoading: false }))
+    yield put(spinner({ deleteEmployeeLoading: false }))
   }
 }
 
 export function* updateEmployeeAt(payloadData) {
   try {
-    yield put(updateSpinner({ updateEmployeeLoading: true }))
+    yield put(spinner({ updateEmployeeLoading: true }))
     const options = {
       path: `update/${payloadData.payload.params.id}`,
       body: payloadData.payload.params,
@@ -73,7 +73,7 @@ export function* updateEmployeeAt(payloadData) {
   } catch (error) {
     console.log('error', error)
   } finally {
-    yield put(updateSpinner({ updateEmployeeLoading: false }))
+    yield put(spinner({ updateEmployeeLoading: false }))
   }
 }
 

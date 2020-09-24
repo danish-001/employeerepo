@@ -26,16 +26,6 @@ export const spinner = (payload = {}) => ({
   payload,
 })
 
-export const deleteSpinner = (payload = {}) => ({
-  type: DELETE_SPINNER,
-  payload,
-})
-
-export const updateSpinner = (payload = {}) => ({
-  type: UPDATE_SPINNER,
-  payload,
-})
-
 export const saveEmployee = (payload = {}) => ({
   type: SAVE_EMPLOYEE,
   payload,

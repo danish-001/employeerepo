@@ -1,6 +1,6 @@
-import { call, put, takeLatest, delay } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import Request from '../../../api/request'
-import { SAVE_EMPLOYEES, GET_EMPLOYEES } from '../constants'
+import { GET_EMPLOYEES } from '../constants'
 import { saveEmployees } from '../actions'
 
 function* getEmployees(payloadData) {
@@ -9,7 +9,6 @@ function* getEmployees(payloadData) {
       path: 'employees',
     }
     const response = yield call([Request, 'get'], options)
-    yield delay(1000)
 
     if (response.data) {
       yield put(saveEmployees({ employees: response.data }))
