@@ -12,9 +12,7 @@ const employeeDetail = (state = initialState, action) => {
     case types.SPINNER: {
       return {
         ...state,
-        createEmployeeLoading: action.payload.createEmployeeLoading,
-        deleteEmployeeLoading: action.payload.deleteEmployeeLoading,
-        updateEmployeeLoading: action.payload.updateEmployeeLoading,
+        ...action.payload,
       }
     }
 

@@ -56,6 +56,9 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     marginHorizontal: 20,
   },
+  employeeSalary: {
+    fontSize: 18,
+  },
 })
 
 export default styles

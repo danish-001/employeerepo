@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import ListItem from '../../../../components/ListItem'
 import { MaterialIcons } from '@expo/vector-icons'
 import Loader from '../../../../components/Loader/index'
 import styles from './styles'
 
 export class Dashboard extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     const { getEmployees } = this.props
     getEmployees()

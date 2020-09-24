@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native'
 import styles, { getRandomColor } from './styles'
 
 function ListItem({ item, onPress }) {
@@ -26,13 +32,22 @@ function ListItem({ item, onPress }) {
             </View>
             <View style={styles.employeeDataView}>
               <Text style={styles.employeeName}>{item.employee_name}</Text>
-              <Text style={{ fontSize: 18 }}>₹ {item.employee_salary}</Text>
+              <Text style={styles.employeeSalary}>
+                ₹ {item.employee_salary}
+              </Text>
             </View>
           </TouchableOpacity>
           <View style={styles.partitionView}></View>
         </>
       )}
       showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          colors={['#9Bd35A', '#689F38']}
+          refreshing={true}
+          onRefresh={() => {}}
+        />
+      }
     />
   )
 }

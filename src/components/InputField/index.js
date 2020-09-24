@@ -31,7 +31,6 @@ const InputField = (props) => {
       />
       {meta.error && meta.submitFailed && (
         <Text style={styles.errorText}>{meta.error}</Text>
-        // <Text style={styles.warningText}>{meta.warning}</Text>
       )}
     </View>
   )
