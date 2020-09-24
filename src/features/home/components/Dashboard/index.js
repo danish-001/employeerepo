@@ -11,8 +11,12 @@ export class Dashboard extends Component {
     getEmployees()
   }
 
+  pullToRefresh = () => {
+    getEmployees()
+  }
+
   render() {
-    const { employees, navigation } = this.props
+    const { employees, navigation, getEmployees } = this.props
 
     return (
       <View style={{ display: 'flex' }}>
@@ -22,6 +26,7 @@ export class Dashboard extends Component {
           <View>
             <ListItem
               item={employees ? employees : []}
+              getEmployees={getEmployees}
               onPress={(defaultValues) =>
                 navigation.navigate('Employee-Details', { defaultValues })
               }

@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import styles, { getRandomColor } from './styles'
 
-function ListItem({ item, onPress }) {
+function ListItem({ item, onPress, getEmployees }) {
   return (
     <FlatList
       data={item}
@@ -44,8 +44,10 @@ function ListItem({ item, onPress }) {
       refreshControl={
         <RefreshControl
           colors={['#9Bd35A', '#689F38']}
-          refreshing={true}
-          onRefresh={() => {}}
+          refreshing={false}
+          onRefresh={() => {
+            getEmployees()
+          }}
         />
       }
     />
