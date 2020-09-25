@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { isIPhoneX } from '../../constants/helper'
+import Colors from '../../constants/Color'
 
 export const getRandomColor = () => {
   return (
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     borderWidth: isIPhoneX() ? 0.7 : 0.5,
     flex: 1,
     flexDirection: 'column',
-    borderColor: 'lightgray',
+    borderColor: Colors.lightGray,
     marginHorizontal: 20,
   },
   employeeSalary: {

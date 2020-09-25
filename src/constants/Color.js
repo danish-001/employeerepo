@@ -1,8 +1,8 @@
 const Colors = {
   white: '#fff',
-  darkGray: 'darkgray',
+  darkGray: '#333',
   gray: 'gray',
-  lightGray: '#333',
+  lightGray: 'darkgray',
 }
 
 export default Colors
