@@ -3,6 +3,7 @@ const Colors = {
   darkGray: '#333',
   gray: 'gray',
   lightGray: 'darkgray',
+  Black: 'black',
 }
 
 export default Colors

@@ -4,7 +4,6 @@ import ListItem from '../../../../components/ListItem'
 import { MaterialIcons } from '@expo/vector-icons'
 import Loader from '../../../../components/Loader/index'
 import styles from './styles'
-import Searchbar from '../../../../components/Searchbar'
 
 export class Dashboard extends Component {
   componentDidMount() {
@@ -21,9 +20,6 @@ export class Dashboard extends Component {
 
     return (
       <View style={{ display: 'flex' }}>
-        <View>
-          <Searchbar />
-        </View>
         {!employees ? (
           <Loader />
         ) : (
