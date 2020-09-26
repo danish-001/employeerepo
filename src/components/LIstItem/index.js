@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
@@ -11,14 +11,16 @@ import {
 import { SearchBar } from 'react-native-elements'
 
 import styles, { getRandomColor } from './styles'
+import { useSafeArea } from 'react-native-safe-area-context'
 
 function ListItem({ item, onPress, getEmployees }) {
   const [searchText, setSearchText] = useState(null)
-  const [data, setData] = useState([])
-  const [temp, setTemp] = useState([])
-  const [error, setError] = useState('')
+  const [data, setData] = useState(null)
+  const [found, setFound] = useState(true)
+  const [employeeList, setEmployeeList] = useState([])
+  const [error, setError] = useState(null)
 
-  employeeSearchBar = () => {
+  const employeeSearchBar = () => {
     return (
       <SearchBar
         placeholder="Search Employee"
@@ -26,34 +28,86 @@ function ListItem({ item, onPress, getEmployees }) {
         round
         editable={true}
         value={searchText}
-        onChangeText={this.searchEmployee}
+        onChangeText={(text) => searchEmployee(text)}
       />
     )
   }
 
-  getData = () => {
+  const getData = () => {
     getEmployees()
   }
 
-  searchEmployee = (searchText) => {
-    setSearchText({ searchText }, () => {
-      if (searchText == '') {
-        setData({
-          data: [...temp],
-        })
-        return
-      }
-      data = temp
-        .filter((item) => {
-          return item.employee_name
-            .toLowerCase()
-            .includes(searchText.toLowerCase())
-        })
-        .map(({ id, employee_name, employee_salary }) => {
-          return { id, employee_name, employee_salary }
-        })
-    })
+  // const searchFilterFunction = (text) => {
+  //   // Check if searched text is not blank
+  //   if (text) {
+  //     // Inserted text is not blank
+  //     // Filter the masterDataSource and update FilteredDataSource
+  //     const newData = masterDataSource.filter(function (item) {
+  //       // Applying filter for the inserted text in search bar
+  //       const itemData = item.title
+  //         ? item.title.toUpperCase()
+  //         : ''.toUpperCase()
+  //       const textData = text.toUpperCase()
+  //       return itemData.indexOf(textData) > -1
+  //     })
+  //     setFilteredDataSource(newData)
+  //     setSearch(text)
+  //   } else {
+  //     // Inserted text is blank
+  //     // Update FilteredDataSource with masterDataSource
+  //     setFilteredDataSource(masterDataSource)
+  //     setSearch(text)
+  //   }
+
+  const searchEmployee = (searchTxt) => {
+    if (searchTxt) {
+      const newData = item.filter((items) => {
+        console.log(items)
+        const itemData = items.employee_name
+          ? items.employee_name.toLowerCase()
+          : ''.toLowerCase()
+        const textData = searchTxt.toLowerCase()
+        return itemData.indexOf(textData) > -1
+      })
+      console.log(newData)
+      setEmployeeList(newData)
+
+      setSearchText(searchTxt)
+    } else {
+      setEmployeeList(item)
+      setSearchText(searchTxt)
+    }
   }
+
+  // const searchEmployee = (searchTxt) => {
+  //   setSearchText(searchTxt)
+
+  //   const filteredEmployee = item.filter((data) => {
+  //     return data.employee_name.toLowerCase().match(searchTxt.toLowerCase())
+  //   })
+  //   if (!searchTxt || searchTxt == '') {
+  //     setEmployeeList({
+  //       employeeList: filteredEmployee,
+  //     })
+  //     setFound({
+  //       found: true,
+  //     })
+  //   }
+  //   else if (!filteredEmployee.length) {
+  //     setFound({
+  //       found: false,
+  //     })
+  //   }
+  //   else if (Array.isArray(filteredEmployee)) {
+  //     setData({
+  //       data: filteredEmployee,
+  //     })
+  //     setEmployeeList({
+  //       employeeList: filteredEmployee,
+  //     })
+  //   }
+  // }
+
   return (
     <View>
       {error != null ? (
@@ -66,52 +120,56 @@ function ListItem({ item, onPress, getEmployees }) {
           }}
         >
           <Text>{error}</Text>
-          <Button title="Reload" onPress={this.getData} />
+          <Button title="Reload" onPress={() => getData()} />
         </View>
       ) : (
-        <FlatList
-          data={item}
-          keyExtractor={(item) => item.id}
-          ListHeaderComponent={this.employeeSearchBar}
-          renderItem={({ item }) => (
-            <>
-              <TouchableOpacity
-                onPress={() => onPress(item)}
-                style={styles.mainContainer}
-              >
-                <View style={styles.aliasMainView}>
-                  <View
-                    style={[
-                      styles.alianInternalView,
-                      { backgroundColor: getRandomColor() },
-                    ]}
-                  >
-                    <Text style={styles.aliasText}>
-                      {item.employee_name.charAt(0)}
+        <View>
+          <View>{employeeSearchBar()}</View>
+          <FlatList
+            data={employeeList.length != 0 ? employeeList : item}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <>
+                <TouchableOpacity
+                  onPress={() => onPress(item)}
+                  style={styles.mainContainer}
+                >
+                  <View style={styles.aliasMainView}>
+                    <View
+                      style={[
+                        styles.alianInternalView,
+                        { backgroundColor: getRandomColor() },
+                      ]}
+                    >
+                      <Text style={styles.aliasText}>
+                        {item.employee_name.charAt(0)}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={styles.employeeDataView}>
+                    <Text style={styles.employeeName}>
+                      {item.employee_name}
+                    </Text>
+                    <Text style={styles.employeeSalary}>
+                      ₹ {item.employee_salary}
                     </Text>
                   </View>
-                </View>
-                <View style={styles.employeeDataView}>
-                  <Text style={styles.employeeName}>{item.employee_name}</Text>
-                  <Text style={styles.employeeSalary}>
-                    ₹ {item.employee_salary}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <View style={styles.partitionView}></View>
-            </>
-          )}
-          showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl
-              colors={['#9Bd35A', '#689F38']}
-              refreshing={false}
-              onRefresh={() => {
-                getEmployees()
-              }}
-            />
-          }
-        />
+                </TouchableOpacity>
+                <View style={styles.partitionView}></View>
+              </>
+            )}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                colors={['#9Bd35A', '#689F38']}
+                refreshing={false}
+                onRefresh={() => {
+                  getEmployees()
+                }}
+              />
+            }
+          />
+        </View>
       )}
     </View>
   )
