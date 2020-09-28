@@ -1,5 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
+import { isIPhoneX } from '../../../../constants/helper'
 import Colors from '../../../../constants/Color'
+
+const { width, height } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   card: {
@@ -25,12 +28,11 @@ const styles = StyleSheet.create({
     height: 74,
     borderRadius: 74,
     position: 'absolute',
-    bottom: 100,
+    top: isIPhoneX() ? height - 200 : height - 170,
     right: 30,
     backgroundColor: Colors.gray,
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
   },
   indicator: {
     flex: 1,

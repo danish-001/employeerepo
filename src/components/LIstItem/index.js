@@ -14,7 +14,7 @@ import styles, { getRandomColor } from './styles'
 function ListItem({ item, onPress, getEmployees }) {
   const [searchText, setSearchText] = useState(null)
   const [employeeList, setEmployeeList] = useState([])
-  const [error, setError] = useState(null)
+  const [found, setFound] = useState(null)
 
   const employeeSearchBar = () => {
     return (
@@ -54,7 +54,7 @@ function ListItem({ item, onPress, getEmployees }) {
 
   return (
     <View>
-      {error != null ? (
+      {found != null ? (
         <View style={styles.errorText}>
           <Text>{error}</Text>
           <Button title="Reload" onPress={() => getData()} />

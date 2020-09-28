@@ -30,13 +30,13 @@ export class Dashboard extends Component {
               onPress={(defaultValues) =>
                 navigation.navigate('Employee-Details', { defaultValues })
               }
-              style={{ flex: 9 }}
+              // style={{ flex: 9 }}
             />
           </View>
         )}
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this.props.navigation.navigate('Employee-Details')}
+          onPress={() => navigation.navigate('Employee-Details')}
           activeOpacity={0.9}
         >
           <MaterialIcons
