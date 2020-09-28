@@ -46,16 +46,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   errorTextContainer: {
-    display: 'flex',
-  },
-  errorText: {
     flex: 1,
-    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  errorText: {
     color: Colors.darkGray,
     fontSize: 40,
-    margin: '0 auto',
+    textAlign: 'center',
+    margin: 10,
+    fontWeight: 'bold',
   },
 })
 
