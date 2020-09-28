@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -9,14 +9,10 @@ import {
 } from 'react-native'
 
 import { SearchBar } from 'react-native-elements'
-
 import styles, { getRandomColor } from './styles'
-import { useSafeArea } from 'react-native-safe-area-context'
 
 function ListItem({ item, onPress, getEmployees }) {
   const [searchText, setSearchText] = useState(null)
-  const [data, setData] = useState(null)
-  const [found, setFound] = useState(true)
   const [employeeList, setEmployeeList] = useState([])
   const [error, setError] = useState(null)
 
@@ -29,6 +25,7 @@ function ListItem({ item, onPress, getEmployees }) {
         editable={true}
         value={searchText}
         onChangeText={(text) => searchEmployee(text)}
+        keyboardType="default"
       />
     )
   }
@@ -47,9 +44,7 @@ function ListItem({ item, onPress, getEmployees }) {
         const textData = searchTxt.toLowerCase()
         return itemData.indexOf(textData) > -1
       })
-      console.log(newData)
       setEmployeeList(newData)
-
       setSearchText(searchTxt)
     } else {
       setEmployeeList(item)
@@ -60,14 +55,7 @@ function ListItem({ item, onPress, getEmployees }) {
   return (
     <View>
       {error != null ? (
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <View style={styles.errorText}>
           <Text>{error}</Text>
           <Button title="Reload" onPress={() => getData()} />
         </View>
@@ -110,7 +98,7 @@ function ListItem({ item, onPress, getEmployees }) {
             showsVerticalScrollIndicator={false}
             refreshControl={
               <RefreshControl
-                colors={['#9Bd35A', '#689F38']}
+                // colors={['#9Bd35A', '#689F38']}
                 refreshing={false}
                 onRefresh={() => {
                   getEmployees()
