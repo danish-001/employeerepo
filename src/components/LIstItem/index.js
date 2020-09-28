@@ -37,28 +37,6 @@ function ListItem({ item, onPress, getEmployees }) {
     getEmployees()
   }
 
-  // const searchFilterFunction = (text) => {
-  //   // Check if searched text is not blank
-  //   if (text) {
-  //     // Inserted text is not blank
-  //     // Filter the masterDataSource and update FilteredDataSource
-  //     const newData = masterDataSource.filter(function (item) {
-  //       // Applying filter for the inserted text in search bar
-  //       const itemData = item.title
-  //         ? item.title.toUpperCase()
-  //         : ''.toUpperCase()
-  //       const textData = text.toUpperCase()
-  //       return itemData.indexOf(textData) > -1
-  //     })
-  //     setFilteredDataSource(newData)
-  //     setSearch(text)
-  //   } else {
-  //     // Inserted text is blank
-  //     // Update FilteredDataSource with masterDataSource
-  //     setFilteredDataSource(masterDataSource)
-  //     setSearch(text)
-  //   }
-
   const searchEmployee = (searchTxt) => {
     if (searchTxt) {
       const newData = item.filter((items) => {
@@ -78,35 +56,6 @@ function ListItem({ item, onPress, getEmployees }) {
       setSearchText(searchTxt)
     }
   }
-
-  // const searchEmployee = (searchTxt) => {
-  //   setSearchText(searchTxt)
-
-  //   const filteredEmployee = item.filter((data) => {
-  //     return data.employee_name.toLowerCase().match(searchTxt.toLowerCase())
-  //   })
-  //   if (!searchTxt || searchTxt == '') {
-  //     setEmployeeList({
-  //       employeeList: filteredEmployee,
-  //     })
-  //     setFound({
-  //       found: true,
-  //     })
-  //   }
-  //   else if (!filteredEmployee.length) {
-  //     setFound({
-  //       found: false,
-  //     })
-  //   }
-  //   else if (Array.isArray(filteredEmployee)) {
-  //     setData({
-  //       data: filteredEmployee,
-  //     })
-  //     setEmployeeList({
-  //       employeeList: filteredEmployee,
-  //     })
-  //   }
-  // }
 
   return (
     <View>
