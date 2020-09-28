@@ -4,9 +4,25 @@ import {
   SET_UPDATE_EMPLOYEE,
   SET_REMOVED_EMPLOYEE,
 } from '../../EmployeeDetails/constants'
+import { getRandomColor } from '../../../components/ListItem/styles'
 
 const initialState = {
   employees: [],
+}
+
+const formatEmployeeList = (employees) => {
+  if (employees) {
+    const newData = []
+    employees.map((_) => {
+      newData.push({
+        ..._,
+        color: getRandomColor(),
+      })
+    })
+    return newData
+  }
+
+  return employees
 }
 
 const homeReducer = (state = { initialState }, action) => {
@@ -14,7 +30,7 @@ const homeReducer = (state = { initialState }, action) => {
     case types.SAVE_EMPLOYEES: {
       return {
         ...state,
-        employees: action.payload.employees,
+        employees: formatEmployeeList(action.payload.employees),
       }
     }
 
@@ -26,6 +42,7 @@ const homeReducer = (state = { initialState }, action) => {
         employee_name: oldDetail.name,
         employee_salary: oldDetail.salary,
         employee_age: oldDetail.age,
+        color: getRandomColor(),
       }
       return {
         ...state,
@@ -63,7 +80,10 @@ const homeReducer = (state = { initialState }, action) => {
           let value = employee
 
           if (id === newData.id) {
-            value = newData
+            value = {
+              ...newData,
+              color: employee.color,
+            }
           }
           employeesList.push(value)
         })

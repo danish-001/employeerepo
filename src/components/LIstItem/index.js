@@ -14,7 +14,7 @@ import styles, { getRandomColor } from './styles'
 function ListItem({ item, onPress, getEmployees }) {
   const [searchText, setSearchText] = useState(null)
   const [employeeList, setEmployeeList] = useState([])
-  const [found, setFound] = useState(null)
+  const [found, setFound] = useState(true)
 
   const employeeSearchBar = () => {
     return (
@@ -46,69 +46,71 @@ function ListItem({ item, onPress, getEmployees }) {
       })
       setEmployeeList(newData)
       setSearchText(searchTxt)
+      setFound(newData.length !== 0)
     } else {
-      setEmployeeList(item)
+      setEmployeeList([])
       setSearchText(searchTxt)
+      setFound(true)
     }
   }
 
+  const noEmployeeFound = () => {
+    return (
+      <View style={styles.errorText}>
+        <Text style={styles.errorText}>{`No results for "${searchText}"`}</Text>
+      </View>
+    )
+  }
+
   return (
-    <View>
-      {found != null ? (
-        <View style={styles.errorText}>
-          <Text>{error}</Text>
-          <Button title="Reload" onPress={() => getData()} />
-        </View>
-      ) : (
-        <View>
-          <View>{employeeSearchBar()}</View>
-          <FlatList
-            data={employeeList.length != 0 ? employeeList : item}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <>
-                <TouchableOpacity
-                  onPress={() => onPress(item)}
-                  style={styles.mainContainer}
-                >
-                  <View style={styles.aliasMainView}>
-                    <View
-                      style={[
-                        styles.alianInternalView,
-                        { backgroundColor: getRandomColor() },
-                      ]}
-                    >
-                      <Text style={styles.aliasText}>
-                        {item.employee_name.charAt(0)}
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={styles.employeeDataView}>
-                    <Text style={styles.employeeName}>
-                      {item.employee_name}
-                    </Text>
-                    <Text style={styles.employeeSalary}>
-                      ₹ {item.employee_salary}
+    <>
+      <View>{employeeSearchBar()}</View>
+      <View style={{ height: '91%' }}>
+        <FlatList
+          data={employeeList.length !== 0 ? employeeList : found ? item : []}
+          keyExtractor={(item) => item.id}
+          ListEmptyComponent={noEmployeeFound}
+          renderItem={({ item }) => (
+            <>
+              <TouchableOpacity
+                onPress={() => onPress(item)}
+                style={styles.mainContainer}
+              >
+                <View style={styles.aliasMainView}>
+                  <View
+                    style={[
+                      styles.alianInternalView,
+                      { backgroundColor: item.color },
+                    ]}
+                  >
+                    <Text style={styles.aliasText}>
+                      {item.employee_name.charAt(0)}
                     </Text>
                   </View>
-                </TouchableOpacity>
-                <View style={styles.partitionView}></View>
-              </>
-            )}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                // colors={['#9Bd35A', '#689F38']}
-                refreshing={false}
-                onRefresh={() => {
-                  getEmployees()
-                }}
-              />
-            }
-          />
-        </View>
-      )}
-    </View>
+                </View>
+                <View style={styles.employeeDataView}>
+                  <Text style={styles.employeeName}>{item.employee_name}</Text>
+                  <Text style={styles.employeeSalary}>
+                    ₹ {item.employee_salary}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <View style={styles.partitionView}></View>
+            </>
+          )}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              // colors={['#9Bd35A', '#689F38']}
+              refreshing={false}
+              onRefresh={() => {
+                getEmployees()
+              }}
+            />
+          }
+        />
+      </View>
+    </>
   )
 }
 

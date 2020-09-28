@@ -45,11 +45,17 @@ const styles = StyleSheet.create({
   employeeSalary: {
     fontSize: 18,
   },
+  errorTextContainer: {
+    display: 'flex',
+  },
   errorText: {
     flex: 1,
-    flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    color: Colors.darkGray,
+    fontSize: 40,
+    margin: '0 auto',
   },
 })
 
