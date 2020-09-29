@@ -75,7 +75,6 @@ export class EmployeeDetails extends Component<Props> {
               <Text style={styles.inputTitle}>Employee Salary</Text>
               <View>
                 <Field
-                  multiline
                   refLink={(ref) => (empRef.salary = ref)}
                   name="salary"
                   component={InputField}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, TextInput, Text } from 'react-native'
 import styles from './styles'
 
@@ -15,10 +15,12 @@ const InputField = (props) => {
     autoFocus,
   } = props
 
+  const [focus, setFocus] = useState(false)
+
   return (
     <View>
       <TextInput
-        style={styles.input}
+        style={[styles.input, focus && styles.focusedInput]}
         placeholder={placeholder}
         onChange={input.onChange}
         defaultValue={input.value}
@@ -28,6 +30,8 @@ const InputField = (props) => {
         onSubmitEditing={onSubmitEditing}
         ref={refLink}
         autoFocus={autoFocus}
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
       />
       {meta.error && meta.submitFailed && (
         <Text style={styles.errorText}>{meta.error}</Text>

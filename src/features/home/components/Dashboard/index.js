@@ -30,6 +30,11 @@ export class Dashboard extends Component {
               onPress={(defaultValues) =>
                 navigation.navigate('Employee-Details', { defaultValues })
               }
+              searchFields={[
+                'employee_name',
+                'employee_salary',
+                'employee_age',
+              ]}
               // style={{ flex: 9 }}
             />
           </View>

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Color'
 
 const styles = StyleSheet.create({
   input: {
@@ -8,6 +9,10 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     fontSize: 18,
+  },
+  focusedInput: {
+    borderColor: Colors.gray,
+    borderWidth: 1,
   },
   errorText: {
     color: 'crimson',

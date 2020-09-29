@@ -37,7 +37,6 @@ function ListItem({ item, onPress, getEmployees }) {
   const searchEmployee = (searchTxt) => {
     if (searchTxt) {
       const newData = item.filter((items) => {
-        console.log(items)
         const itemData = items.employee_name
           ? items.employee_name.toLowerCase()
           : ''.toLowerCase()
@@ -56,7 +55,7 @@ function ListItem({ item, onPress, getEmployees }) {
 
   const noEmployeeFound = () => {
     return (
-      <View style={styles.errorText}>
+      <View style={styles.errorTextContainer}>
         <Text style={styles.errorText}>{`No results for "${searchText}"`}</Text>
       </View>
     )
