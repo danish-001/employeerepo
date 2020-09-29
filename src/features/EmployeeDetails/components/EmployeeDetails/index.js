@@ -93,9 +93,6 @@ export class EmployeeDetails extends Component<Props> {
                   component={InputField}
                   placeholder="Age"
                   keyboardType="numeric"
-                  onSubmitEditing={() => {
-                    alert('value submitted !!!')
-                  }}
                 />
               </View>
               <View>
