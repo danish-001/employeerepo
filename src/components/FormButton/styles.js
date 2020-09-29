@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native'
+import { isIPhoneX } from '../../constants/helper'
+import Colors from '../../constants/Color'
 
 const styles = StyleSheet.create({
   button: {
@@ -6,13 +8,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 14,
     paddingVertical: 12,
-    backgroundColor: '#000',
+    backgroundColor: Colors.Black,
   },
   buttonText: {
-    color: 'white',
+    color: Colors.white,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 20,
+    fontSize: isIPhoneX() ? 20 : 17,
     textAlign: 'center',
   },
   buttonContainer: { paddingHorizontal: 30 },

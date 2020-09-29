@@ -5,9 +5,7 @@ import Request from '../../../api/request'
 import {
   spinner,
   saveEmployee,
-  deleteSpinner,
   setRemovedEmployee,
-  updateSpinner,
   setUpdateEmployee,
 } from '../actions'
 

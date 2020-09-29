@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native'
 import { isIPhoneX } from '../../../../constants/helper'
 import Colors from '../../../../constants/Color'
 
-const { width, height } = Dimensions.get('window')
+const { height } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   card: {

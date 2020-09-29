@@ -5,16 +5,16 @@ import {
   FlatList,
   TouchableOpacity,
   RefreshControl,
-  Button,
 } from 'react-native'
 
 import { SearchBar } from 'react-native-elements'
-import styles, { getRandomColor } from './styles'
+import styles from './styles'
 
-function ListItem({ item, onPress, getEmployees }) {
+function ListItem({ item, onPress, getEmployees, searchFields }) {
   const [searchText, setSearchText] = useState(null)
   const [employeeList, setEmployeeList] = useState([])
   const [found, setFound] = useState(true)
+  const [loading, toggleLoading] = useState(false)
 
   const employeeSearchBar = () => {
     return (
@@ -26,23 +26,32 @@ function ListItem({ item, onPress, getEmployees }) {
         value={searchText}
         onChangeText={(text) => searchEmployee(text)}
         keyboardType="default"
+        showLoading={loading}
       />
     )
   }
 
-  const getData = () => {
-    getEmployees()
-  }
-
   const searchEmployee = (searchTxt) => {
+    toggleLoading(true)
     if (searchTxt) {
+      const textData = searchTxt.toLowerCase()
+
       const newData = item.filter((items) => {
-        const itemData = items.employee_name
-          ? items.employee_name.toLowerCase()
-          : ''.toLowerCase()
-        const textData = searchTxt.toLowerCase()
-        return itemData.indexOf(textData) > -1
+        let isFind = false
+
+        searchFields.filter((searchItem) => {
+          const itemData = items[searchItem]
+            ? items[searchItem].toLowerCase()
+            : ''.toLowerCase()
+
+          if (itemData.indexOf(textData) > -1) {
+            isFind = true
+          }
+        })
+
+        return isFind
       })
+
       setEmployeeList(newData)
       setSearchText(searchTxt)
       setFound(newData.length !== 0)
@@ -51,6 +60,10 @@ function ListItem({ item, onPress, getEmployees }) {
       setSearchText(searchTxt)
       setFound(true)
     }
+
+    setTimeout(() => {
+      toggleLoading(false)
+    }, 500)
   }
 
   const noEmployeeFound = () => {
@@ -100,7 +113,6 @@ function ListItem({ item, onPress, getEmployees }) {
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
-              // colors={['#9Bd35A', '#689F38']}
               refreshing={false}
               onRefresh={() => {
                 getEmployees()

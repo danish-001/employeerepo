@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Color'
 
 const styles = StyleSheet.create({
   modalBackground: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00000040',
   },
   activityIndicatorHolder: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.white,
     height: 100,
     width: 100,
     borderRadius: 10,

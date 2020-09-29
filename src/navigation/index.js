@@ -18,7 +18,7 @@ const navigator = () => {
           options={{
             title: 'Dashboard',
             headerStyle: {
-              backgroundColor: Colors.lightGray,
+              backgroundColor: Colors.gray,
             },
             headerTintColor: Colors.white,
             headerTitleStyle: {
@@ -33,7 +33,7 @@ const navigator = () => {
           options={{
             title: 'Employee Details',
             headerStyle: {
-              backgroundColor: Colors.lightGray,
+              backgroundColor: Colors.gray,
             },
             headerTintColor: Colors.white,
             headerTitleStyle: {

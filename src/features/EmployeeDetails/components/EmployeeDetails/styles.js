@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   dualButtonContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
   },
 })
 

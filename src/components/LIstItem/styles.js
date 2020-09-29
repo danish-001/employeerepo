@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { isIPhoneX } from '../../constants/helper'
 import Colors from '../../constants/Color'
+
+const { height } = Dimensions.get('window')
 
 export const getRandomColor = () => {
   return (
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  aliasText: { fontSize: 22, color: '#fff' },
+  aliasText: { fontSize: 22, color: Colors.white },
   employeeDataView: { flex: 8.5, margin: 12, paddingLeft: 18 },
   employeeName: { fontSize: 27, fontWeight: '500', letterSpacing: 1.5 },
   partitionView: {
@@ -50,10 +52,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    height: height - 220,
   },
   errorText: {
     color: Colors.darkGray,
-    fontSize: 40,
+    fontSize: 34,
     textAlign: 'center',
     margin: 10,
     fontWeight: 'bold',

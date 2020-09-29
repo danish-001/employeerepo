@@ -35,7 +35,6 @@ export class Dashboard extends Component {
                 'employee_salary',
                 'employee_age',
               ]}
-              // style={{ flex: 9 }}
             />
           </View>
         )}
