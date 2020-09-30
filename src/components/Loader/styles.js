@@ -1,23 +1,22 @@
-import { StyleSheet } from 'react-native'
 import Colors from '../../constants/Color'
+import styled from 'styled-components'
 
-const styles = StyleSheet.create({
-  modalBackground: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    backgroundColor: '#00000040',
-  },
-  activityIndicatorHolder: {
-    backgroundColor: Colors.white,
-    height: 100,
-    width: 100,
-    borderRadius: 10,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-})
+const ModalBackground = styled.View`
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #00000040;
+`
 
-export default styles
+const ActivityIndicatorHolder = styled.View`
+  background-color: ${Colors.white};
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
+
+export { ModalBackground, ActivityIndicatorHolder }

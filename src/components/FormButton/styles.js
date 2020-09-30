@@ -1,23 +1,26 @@
-import { StyleSheet } from 'react-native'
 import { isIPhoneX } from '../../constants/helper'
 import Colors from '../../constants/Color'
 
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 8,
-    marginTop: 20,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    backgroundColor: Colors.Black,
-  },
-  buttonText: {
-    color: Colors.white,
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    fontSize: isIPhoneX() ? 20 : 17,
-    textAlign: 'center',
-  },
-  buttonContainer: { paddingHorizontal: 30 },
-})
+import styled from 'styled-components'
 
-export default styles
+const SubmitButtonContainer = styled.TouchableOpacity`
+  padding-horizontal: 30;
+`
+
+const SubmitButton = styled.View`
+  border-radius: 8;
+  margin-top: 20;
+  padding-horizontal: 14;
+  padding-vertical: 12;
+  background-color: ${Colors.Black};
+`
+
+const ButtonText = styled.Text`
+  color: ${Colors.white};
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: ${isIPhoneX() ? 20 : 17};
+  text-align: center;
+`
+
+export { SubmitButtonContainer, SubmitButton, ButtonText }

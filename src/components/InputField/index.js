@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text } from 'react-native'
-import styles from './styles'
+import { TextInput } from 'react-native'
+import { styles, TextInputContainer, ErrorText } from './styles'
 
 const InputField = (props) => {
   const {
@@ -18,7 +18,7 @@ const InputField = (props) => {
   const [focus, setFocus] = useState(false)
 
   return (
-    <View>
+    <TextInputContainer>
       <TextInput
         style={[styles.input, focus && styles.focusedInput]}
         placeholder={placeholder}
@@ -33,10 +33,8 @@ const InputField = (props) => {
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
       />
-      {meta.error && meta.submitFailed && (
-        <Text style={styles.errorText}>{meta.error}</Text>
-      )}
-    </View>
+      {meta.error && meta.submitFailed && <ErrorText>{meta.error}</ErrorText>}
+    </TextInputContainer>
   )
 }
 

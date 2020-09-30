@@ -1,8 +1,8 @@
 import React from 'react'
-import { View, Modal, ActivityIndicator } from 'react-native'
-import styles from './styles'
+import { Modal, ActivityIndicator } from 'react-native'
+import { ModalBackground, ActivityIndicatorHolder } from './styles'
 
-const SmartLoader = (props) => {
+export const SmartLoader = (props) => {
   const { isLoading, ...attributes } = props
 
   return (
@@ -14,13 +14,11 @@ const SmartLoader = (props) => {
         console.log('Noop')
       }}
     >
-      <View style={styles.modalBackground}>
-        <View style={styles.activityIndicatorHolder}>
+      <ModalBackground>
+        <ActivityIndicatorHolder>
           <ActivityIndicator animating={isLoading} size="large" />
-        </View>
-      </View>
+        </ActivityIndicatorHolder>
+      </ModalBackground>
     </Modal>
   )
 }
-
-export default SmartLoader

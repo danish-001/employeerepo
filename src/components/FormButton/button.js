@@ -1,18 +1,18 @@
 import React from 'react'
-import { TouchableOpacity, View, Text, ActivityIndicator } from 'react-native'
-import styles from './styles'
+import { ActivityIndicator } from 'react-native'
+import { SubmitButtonContainer, SubmitButton, ButtonText } from './styles'
 
 const flatButton = ({ text, onPress, loading, backgroundColor = '#000' }) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
-      <View style={[styles.button, { backgroundColor: backgroundColor }]}>
+    <SubmitButtonContainer onPress={onPress}>
+      <SubmitButton>
         {!loading ? (
-          <Text style={styles.buttonText}>{text}</Text>
+          <ButtonText>{text}</ButtonText>
         ) : (
           <ActivityIndicator size="small" />
         )}
-      </View>
-    </TouchableOpacity>
+      </SubmitButton>
+    </SubmitButtonContainer>
   )
 }
 export default flatButton

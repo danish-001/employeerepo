@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  RefreshControl,
-} from 'react-native'
+import { View, FlatList, RefreshControl } from 'react-native'
 
 import { SearchBar } from 'react-native-elements'
-import styles from './styles'
+import {
+  styles,
+  ErrorTextContainer,
+  ErrorText,
+  SearchBarContainer,
+  FlatListContainer,
+  EmployeeDataContainer,
+  AliasNameView,
+  AliasText,
+  EmployeeDataView,
+  EmployeeName,
+  EmployeeSalary,
+  PartitionView,
+} from './styles'
 
 function ListItem({ item, onPress, getEmployees, searchFields }) {
   const [searchText, setSearchText] = useState(null)
@@ -68,46 +75,39 @@ function ListItem({ item, onPress, getEmployees, searchFields }) {
 
   const noEmployeeFound = () => {
     return (
-      <View style={styles.errorTextContainer}>
-        <Text style={styles.errorText}>{`No results for "${searchText}"`}</Text>
-      </View>
+      <ErrorTextContainer>
+        <ErrorText>{`No results for "${searchText}"`}</ErrorText>
+      </ErrorTextContainer>
     )
   }
 
   return (
     <>
-      <View>{employeeSearchBar()}</View>
-      <View style={{ height: '91%' }}>
+      <SearchBarContainer>{employeeSearchBar()}</SearchBarContainer>
+      <FlatListContainer>
         <FlatList
           data={employeeList.length !== 0 ? employeeList : found ? item : []}
           keyExtractor={(item) => item.id}
           ListEmptyComponent={noEmployeeFound}
           renderItem={({ item }) => (
             <>
-              <TouchableOpacity
-                onPress={() => onPress(item)}
-                style={styles.mainContainer}
-              >
-                <View style={styles.aliasMainView}>
+              <EmployeeDataContainer onPress={() => onPress(item)}>
+                <AliasNameView>
                   <View
                     style={[
-                      styles.alianInternalView,
+                      styles.aliasInternalView,
                       { backgroundColor: item.color },
                     ]}
                   >
-                    <Text style={styles.aliasText}>
-                      {item.employee_name.charAt(0)}
-                    </Text>
+                    <AliasText>{item.employee_name.charAt(0)}</AliasText>
                   </View>
-                </View>
-                <View style={styles.employeeDataView}>
-                  <Text style={styles.employeeName}>{item.employee_name}</Text>
-                  <Text style={styles.employeeSalary}>
-                    ₹ {item.employee_salary}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <View style={styles.partitionView}></View>
+                </AliasNameView>
+                <EmployeeDataView>
+                  <EmployeeName>{item.employee_name}</EmployeeName>
+                  <EmployeeSalary>₹ {item.employee_salary}</EmployeeSalary>
+                </EmployeeDataView>
+              </EmployeeDataContainer>
+              <PartitionView></PartitionView>
             </>
           )}
           showsVerticalScrollIndicator={false}
@@ -120,7 +120,7 @@ function ListItem({ item, onPress, getEmployees, searchFields }) {
             />
           }
         />
-      </View>
+      </FlatListContainer>
     </>
   )
 }

@@ -1,5 +1,16 @@
 import { StyleSheet } from 'react-native'
 import Colors from '../../constants/Color'
+import styled from 'styled-components'
+
+const TextInputContainer = styled.View``
+
+const ErrorText = styled.Text`
+  color: crimson;
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 2px;
+  text-align: center;
+`
 
 const styles = StyleSheet.create({
   input: {
@@ -14,20 +25,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.gray,
     borderWidth: 1,
   },
-  errorText: {
-    color: 'crimson',
-    fontWeight: 'bold',
-    marginBottom: 4,
-    marginTop: 2,
-    textAlign: 'center',
-  },
-  warningText: {
-    color: 'orange',
-    fontWeight: 'bold',
-    marginBottom: 4,
-    marginTop: 2,
-    textAlign: 'center',
-  },
 })
 
-export default styles
+export { styles, TextInputContainer, ErrorText }
