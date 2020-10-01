@@ -5,7 +5,7 @@ import { SubmitButtonContainer, SubmitButton, ButtonText } from './styles'
 const flatButton = ({ text, onPress, loading, backgroundColor = '#000' }) => {
   return (
     <SubmitButtonContainer onPress={onPress}>
-      <SubmitButton>
+      <SubmitButton backgroundColor={backgroundColor}>
         {!loading ? (
           <ButtonText>{text}</ButtonText>
         ) : (

@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
-import { ScrollView, View, KeyboardAvoidingView, Text } from 'react-native'
+import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { Field, change } from 'redux-form'
 import InputField from '../../../../components/InputField/index'
 import FlatButton from '../../../../components/FormButton/button'
-import styles from './styles'
+import {
+  EmployeeDetailsContainer,
+  FormContainer,
+  EmployeeName,
+  TextInputField,
+  EmployeeSalary,
+  EmployeeAge,
+  ButtonContainer,
+  DualButtonContainer,
+  UpdateButtonContainer,
+  DeleteButtonContainer,
+} from './styles'
 
 type Props = {
   users: Array<any>,
@@ -55,12 +66,12 @@ export class EmployeeDetails extends Component<Props> {
 
     const empRef = {}
     return (
-      <View>
+      <EmployeeDetailsContainer>
         <ScrollView keyboardShouldPersistTaps="handled">
           <KeyboardAvoidingView>
-            <View style={styles.container}>
-              <Text style={styles.inputTitle}>Employee Name</Text>
-              <View>
+            <FormContainer>
+              <EmployeeName>Employee Name</EmployeeName>
+              <TextInputField>
                 <Field
                   refLink={(ref) => (empRef.name = ref)}
                   name="name"
@@ -71,9 +82,9 @@ export class EmployeeDetails extends Component<Props> {
                     empRef.salary.focus()
                   }}
                 />
-              </View>
-              <Text style={styles.inputTitle}>Employee Salary</Text>
-              <View>
+              </TextInputField>
+              <EmployeeSalary>Employee Salary</EmployeeSalary>
+              <TextInputField>
                 <Field
                   refLink={(ref) => (empRef.salary = ref)}
                   name="salary"
@@ -84,9 +95,9 @@ export class EmployeeDetails extends Component<Props> {
                     empRef.age.focus()
                   }}
                 />
-              </View>
-              <Text style={styles.inputTitle}>Employee Age</Text>
-              <View>
+              </TextInputField>
+              <EmployeeAge>Employee Age</EmployeeAge>
+              <TextInputField>
                 <Field
                   name="age"
                   refLink={(ref) => (empRef.age = ref)}
@@ -94,26 +105,26 @@ export class EmployeeDetails extends Component<Props> {
                   placeholder="Age"
                   keyboardType="numeric"
                 />
-              </View>
-              <View>
+              </TextInputField>
+              <ButtonContainer>
                 {route.params && route.params.defaultValues ? (
-                  <View style={styles.dualButtonContainer}>
-                    <View style={{ flex: 1 }}>
+                  <DualButtonContainer>
+                    <UpdateButtonContainer>
                       <FlatButton
                         text="Update"
                         onPress={handleSubmit(this.updateEmployee)}
                         loading={updateEmployeeLoading}
                       />
-                    </View>
-                    <View style={{ flex: 1 }}>
+                    </UpdateButtonContainer>
+                    <DeleteButtonContainer>
                       <FlatButton
                         text="Delete"
                         onPress={handleSubmit(this.deleteEmployee)}
                         loading={deleteEmployeeLoading}
                         backgroundColor="orangered"
                       />
-                    </View>
-                  </View>
+                    </DeleteButtonContainer>
+                  </DualButtonContainer>
                 ) : (
                   <FlatButton
                     text="Submit"
@@ -121,11 +132,11 @@ export class EmployeeDetails extends Component<Props> {
                     loading={createEmployeeLoading}
                   />
                 )}
-              </View>
-            </View>
+              </ButtonContainer>
+            </FormContainer>
           </KeyboardAvoidingView>
         </ScrollView>
-      </View>
+      </EmployeeDetailsContainer>
     )
   }
 }

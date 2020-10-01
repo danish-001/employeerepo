@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { View, FlatList, RefreshControl } from 'react-native'
+import { FlatList, RefreshControl } from 'react-native'
 
 import { SearchBar } from 'react-native-elements'
 import {
-  styles,
   ErrorTextContainer,
   ErrorText,
   SearchBarContainer,
@@ -15,6 +14,7 @@ import {
   EmployeeName,
   EmployeeSalary,
   PartitionView,
+  AliasInternalView,
 } from './styles'
 
 function ListItem({ item, onPress, getEmployees, searchFields }) {
@@ -93,14 +93,9 @@ function ListItem({ item, onPress, getEmployees, searchFields }) {
             <>
               <EmployeeDataContainer onPress={() => onPress(item)}>
                 <AliasNameView>
-                  <View
-                    style={[
-                      styles.aliasInternalView,
-                      { backgroundColor: item.color },
-                    ]}
-                  >
+                  <AliasInternalView backgroundColor={item.color}>
                     <AliasText>{item.employee_name.charAt(0)}</AliasText>
-                  </View>
+                  </AliasInternalView>
                 </AliasNameView>
                 <EmployeeDataView>
                   <EmployeeName>{item.employee_name}</EmployeeName>

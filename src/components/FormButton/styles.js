@@ -12,7 +12,7 @@ const SubmitButton = styled.View`
   margin-top: 20;
   padding-horizontal: 14;
   padding-vertical: 12;
-  background-color: ${Colors.Black};
+  background-color: ${(props) => props.backgroundColor};
 `
 
 const ButtonText = styled.Text`

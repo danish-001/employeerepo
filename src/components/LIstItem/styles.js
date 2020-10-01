@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { Dimensions } from 'react-native'
 import { isIPhoneX } from '../../constants/helper'
 import Colors from '../../constants/Color'
 import styled from 'styled-components'
@@ -77,19 +77,18 @@ const PartitionView = styled.View`
 
 const SearchBarContainer = styled.View``
 
-const styles = StyleSheet.create({
-  aliasInternalView: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    marginLeft: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
+const AliasInternalView = styled.View`
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.backgroundColor};
+`
 
 export {
-  styles,
+  AliasInternalView,
   ErrorTextContainer,
   ErrorText,
   SearchBarContainer,

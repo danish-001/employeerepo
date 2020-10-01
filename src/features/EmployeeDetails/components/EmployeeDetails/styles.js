@@ -1,21 +1,59 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 30,
-  },
-  inputTitle: {
-    letterSpacing: 1,
-    fontWeight: 'bold',
-    fontSize: 18,
-    paddingLeft: 10,
-    paddingVertical: 10,
-  },
-  dualButtonContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 0,
-  },
-})
+const EmployeeDetailsContainer = styled.View``
 
-export default styles
+const FormContainer = styled.View`
+  flex: 1;
+  padding: 30px;
+`
+
+const EmployeeName = styled.Text`
+  letter-spacing: 1;
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-vertical: 10px;
+`
+const EmployeeSalary = styled.Text`
+  letter-spacing: 1;
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-vertical: 10px;
+`
+const EmployeeAge = styled.Text`
+  letter-spacing: 1;
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-vertical: 10px;
+`
+
+const ButtonContainer = styled.View``
+
+const TextInputField = styled.View``
+
+const DualButtonContainer = styled.View`
+  flex-direction: row;
+  padding-horizontal: 0;
+`
+const UpdateButtonContainer = styled.View`
+  flex: 1;
+`
+
+const DeleteButtonContainer = styled.View`
+  flex: 1;
+`
+
+export {
+  EmployeeDetailsContainer,
+  FormContainer,
+  EmployeeName,
+  TextInputField,
+  EmployeeSalary,
+  EmployeeAge,
+  ButtonContainer,
+  DualButtonContainer,
+  UpdateButtonContainer,
+  DeleteButtonContainer,
+}
