@@ -28,7 +28,7 @@ const ErrorText = styled.Text`
   color: ${Colors.darkGray};
   font-size: 34;
   text-align: center;
-  margin: 10pxs;
+  margin: 10px;
   font-weight: bold;
 `
 
