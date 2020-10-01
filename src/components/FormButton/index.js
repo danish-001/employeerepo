@@ -2,7 +2,12 @@ import React from "react";
 import { ActivityIndicator } from "react-native";
 import { SubmitButtonContainer, SubmitButton, ButtonText } from "./styles";
 
-const flatButton = ({ text, onPress, loading, backgroundColor = "#000" }) => {
+export const FormButton = ({
+    text,
+    onPress,
+    loading,
+    backgroundColor = "#000",
+}) => {
     return (
         <SubmitButtonContainer onPress={onPress}>
             <SubmitButton backgroundColor={backgroundColor}>
@@ -15,4 +20,3 @@ const flatButton = ({ text, onPress, loading, backgroundColor = "#000" }) => {
         </SubmitButtonContainer>
     );
 };
-export default flatButton;
