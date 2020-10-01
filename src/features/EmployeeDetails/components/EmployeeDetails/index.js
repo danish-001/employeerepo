@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import { Field, change } from "redux-form";
-import { InputField, FormButton } from "../../../../components";
+import { InputField, FormButton } from "@/components";
 
 import {
     EmployeeDetailsContainer,

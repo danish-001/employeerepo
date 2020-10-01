@@ -1,7 +1,7 @@
 import { call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import { CREATE_EMPLOYEE, DELETE_EMPLOYEE, UPDATE_EMPLOYEE } from '../constants'
 
-import Request from '../../../api/request'
+import Request from '@/api/request'
 import {
   spinner,
   saveEmployee,

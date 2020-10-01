@@ -1,6 +1,6 @@
 import { Dimensions, View, TouchableOpacity } from 'react-native'
-import { isIPhoneX } from '../../../../constants/helper'
-import Colors from '../../../../constants/Color'
+import { isIPhoneX } from '@/constants/helper'
+import Colors from '@/constants/Color'
 import styled from 'styled-components'
 import { MaterialIcons } from '@expo/vector-icons'
 

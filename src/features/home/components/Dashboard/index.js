@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { ListItem } from "@/components";
-import { SmartLoader } from "@/components";
+import { ListItem, SmartLoader } from "@/components";
 import { Body, AddButton, PlusIcon } from "./styles";
 
 export default class Dashboard extends Component {

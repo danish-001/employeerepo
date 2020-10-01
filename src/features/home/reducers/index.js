@@ -4,7 +4,7 @@ import {
   SET_UPDATE_EMPLOYEE,
   SET_REMOVED_EMPLOYEE,
 } from '../../EmployeeDetails/constants'
-import { getRandomColor } from '../../../components/ListItem/styles'
+import { getRandomColor } from '@/components/ListItem/styles'
 
 const initialState = {
   employees: [],
