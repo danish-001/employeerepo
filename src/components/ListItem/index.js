@@ -17,7 +17,14 @@ import {
     AliasInternalView,
 } from "./styles";
 
-export function ListItem({ item, onPress, getEmployees, searchFields }) {
+type IProps = {
+    item: Array<any>,
+    onPress: Function,
+    getEmployees: Function,
+    searchFields: Object
+}
+
+export function ListItem({ item, onPress, getEmployees, searchFields }: IProps) {
     const [searchText, setSearchText] = useState(null);
     const [employeeList, setEmployeeList] = useState([]);
     const [found, setFound] = useState(true);

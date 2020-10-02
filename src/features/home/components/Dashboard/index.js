@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { ListItem, SmartLoader } from "@/components";
 import { Body, AddButton, PlusIcon } from "./styles";
 
-export default class Dashboard extends Component {
+type IProps = {
+    getEmployees: Function,
+    navigation: any,
+    employees: Array<any>
+};
+export default class Dashboard extends Component <IProps> {
     componentDidMount() {
         const { getEmployees } = this.props;
         getEmployees();

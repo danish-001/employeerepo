@@ -2,7 +2,22 @@ import React, { useState } from "react";
 import { TextInput } from "react-native";
 import { styles, TextInputContainer, ErrorText } from "./styles";
 
-export const InputField = (props) => {
+type IProps = {
+    placeholder: String,
+    meta: {
+        error: String,
+        submitFailed: Boolean
+    },
+    input: any,
+    multiline: Boolean,
+    height: Number,
+    keyboardType: String,
+    onSubmitEditing: Function,
+    refLink: Function,
+    autoFocus: Function
+}
+
+export const InputField = (props: IProps) => {
     const {
         placeholder,
         meta,
